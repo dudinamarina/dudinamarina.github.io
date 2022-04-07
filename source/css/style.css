@@ -1,0 +1,268 @@
+body{
+    font-family: arial, sans-serif;
+}
+nav {
+    width: 100%;
+    height: 60px;
+    background: #344051;
+}
+.logo{
+    color: white;
+    font-size: 22px;
+    line-height: 60px;
+    padding-left: 150px;
+    float: left
+}
+.menu{
+    float: left;
+    padding-left: 220px;
+}
+.menu li{
+    float: left;
+    line-height: 60px;
+    color: white;
+    margin-right: 40px;
+    font-size: 12px;
+    text-transform: uppercase;
+}
+.main{
+    width: 100%;
+    height: calc(100% - 60px);
+    background: url(../img/boy.png) 90% 100%/auto 85% no-repeat, url(../img/bg.jpg) center/cover no-repeat;
+}
+.title_container{
+    float: left;
+    margin: 200px 0px 0px 150px;
+    color: #2c384a;
+    text-align: center;
+}
+.title_container h1{
+    font-size: 40px;
+    font-weight: bold;
+}
+.title_container h4{
+    margin-top: 40px;
+    font-size: 25px;
+    color: #79818d;
+}
+.title_container input{
+    height: 40px;
+    text-align: center;
+    border: 2px solid #6d7682;
+    background: none;
+    border-radius: 5px;
+    color: #6d7682;
+    font-size: 13px;
+    padding: 5px 16px;
+    margin: 50px 14px 0px 14px;
+}
+.i h2{
+    text-align: center;
+    margin-top: 30px;
+    text-transform: uppercase;
+    font-size: 25px;
+}
+
+.i p{
+    text-align: center;
+    line-height: 50px;
+}
+.i input{
+    height: 40px;
+    text-align: center;
+    border: 2px solid #6d7682;
+    background: none;
+    border-radius: 5px;
+    color: #6d7682;
+    font-size: 13px;
+    padding: 5px 16px;
+    margin: 10px 14px 0px 45%;
+}
+.job{
+    background: url(../img/bg-2.jpg) center;
+    background-size: contain;
+    
+}
+
+.job h2{
+    text-align: center;
+    margin-top: 60px;
+    text-transform: uppercase;
+    font-size: 25px;
+    padding: 40px;
+}
+
+.name{
+    float: left;
+    line-height: 30px;
+    margin-top: 0px;
+    width: 310px;
+    margin-right: 0px;
+    text-align: center;
+    
+}
+
+.keis h2{
+  text-align: center;
+    margin-top: 80px;
+    text-transform: uppercase;
+    font-size: 25px;
+    padding: 40px;   
+}
+.keis p{
+    margin: 10px;
+    text-align: center;
+}
+.keis img{
+    margin: 50px;
+}
+.text_keis input{
+    height: 30px;
+    text-align: center;
+    border: 2px;
+    background: #63b5ae;
+    border-radius: 5px;
+    color: white;
+    font-size: 13px;
+    padding: 5px 16px;
+    margin: 10px 20px 30px 0px;
+}
+.text_keis p{
+    margin: 0px 0px 5px 40px;
+}
+
+
+
+.many h2{
+    text-align: center;
+    margin-top: 80px;
+    font-size: 25px;
+    padding: 40px;
+}
+
+#itog{
+    margin: 0px 0px 0px 250px;
+    text-transform: capitalize;
+}
+#itog2{
+    margin: 0px 0px 0px 250px;
+    text-transform: capitalize;
+}
+.many p{
+    margin: 10px 80px 10px 250px;
+    text-transform: uppercase;
+}
+
+.it{
+    margin: 250px;
+    padding: 15px 300px;
+}
+.it2{
+    margin: 250px;
+    padding: 15px 300px;
+}
+.stistic h2{
+  text-align: center;
+    margin-top: 80px;
+    text-transform: uppercase;
+    font-size: 25px;
+    padding: 60px; 
+}
+
+.st{
+    float: left;
+    line-height: 30px;
+    margin-top: 0px;
+    width: 310px;
+    margin-right: 0px;
+    text-align: center;
+    margin-bottom: 60px;
+}
+.stistic{
+background: url(../img/bg3.jpg);
+}
+
+.otziv h2{
+  text-align: center;
+    margin-top: 80px;
+    text-transform: uppercase;
+    font-size: 25px;
+    padding: 30px; 
+}
+img{
+    margin: 30px 14px 20px 46%;
+}
+.otziv p{
+    text-align: center;
+    line-height: 30px;
+}
+
+.otziv input{
+    float: left;
+    width: 20px;
+    text-align: center;
+    
+}
+
+form h2{
+    text-align: center;
+    margin-top: 60px;
+    text-transform: uppercase;
+    font-size: 25px;
+    padding: 40px; 
+    color: white;
+}
+form{
+    background: url(../img/bg4.jpg);
+    background-size: 100%;
+}
+.cn{
+     text-align: center;
+    margin-top: 0px;
+    padding: 0px; 
+    color: white;
+}
+.text_cn{
+    text-align: center;
+    margin-top: 10px;
+    color: white;
+}
+.text_cn2{
+    text-align: center;
+    text-transform: uppercase;
+    font-size: 15px;
+    padding: 20px; 
+    color: white;
+}
+.form input{
+   margin: 0px 0px 5px 40%;
+    height: 30px;
+    width: 200px;
+    display: inline;
+}
+#text_form{
+     margin: 0px 0px 5px 40%;
+    height: 50px;
+    width: 300px;
+}
+.sub input{
+     height: 40px;
+    text-align: center;
+    border: 2px solid #6d7682;
+    background: none;
+    border-radius: 5px;
+    color: #6d7682;
+    font-size: 13px;
+    padding: 5px 16px;
+    margin: 10px 14px 40px 48%;
+}
+footer{
+    width: 100%;
+    height: 60px;
+    background: #344051;
+    text-align: center;
+    color: white;
+}
+footer p{
+    padding-top: 20px;
+}
