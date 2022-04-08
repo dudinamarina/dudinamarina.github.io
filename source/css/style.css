@@ -83,7 +83,9 @@ nav {
     background-size: contain;
     
 }
-
+div.job{
+    height: 300px;
+}
 .job h2{
     text-align: center;
     margin-top: 60px;
@@ -130,7 +132,9 @@ nav {
 .text_keis p{
     margin: 0px 0px 5px 40px;
 }
-
+.text_keis{
+    float: left;
+}
 
 
 .many h2{
@@ -140,6 +144,11 @@ nav {
     padding: 40px;
 }
 
+.mn{
+    display: block;
+    margin: 10px 30px 20px 30%;
+    text-transform: uppercase;
+}
 #itog{
     margin: 0px 0px 0px 250px;
     text-transform: capitalize;
@@ -148,19 +157,8 @@ nav {
     margin: 0px 0px 0px 250px;
     text-transform: capitalize;
 }
-.many p{
-    margin: 10px 80px 10px 250px;
-    text-transform: uppercase;
-}
 
-.it{
-    margin: 250px;
-    padding: 15px 300px;
-}
-.it2{
-    margin: 250px;
-    padding: 15px 300px;
-}
+
 .stistic h2{
   text-align: center;
     margin-top: 80px;
@@ -168,7 +166,9 @@ nav {
     font-size: 25px;
     padding: 60px; 
 }
-
+div.stistic{
+   height: 300px;
+}
 .st{
     float: left;
     line-height: 30px;
@@ -179,7 +179,7 @@ nav {
     margin-bottom: 60px;
 }
 .stistic{
-background: url(../img/bg3.jpg);
+background: url(../img/bg3.jpg) 100%;
 }
 
 .otziv h2{
@@ -201,7 +201,6 @@ img{
     float: left;
     width: 20px;
     text-align: center;
-    
 }
 
 form h2{
@@ -222,28 +221,36 @@ form{
     padding: 0px; 
     color: white;
 }
+
 .text_cn{
-    text-align: center;
-    margin-top: 10px;
     color: white;
+    float: left;
+    text-align: center;
+    width: 330px;
+    height: 40px;
+    margin: 20px 40px 0px 40px;
+    line-height: normal;
 }
 .text_cn2{
     text-align: center;
     text-transform: uppercase;
     font-size: 15px;
-    padding: 20px; 
+    padding: 40px; 
     color: white;
+    margin-top: 40px;
 }
-.form input{
-   margin: 0px 0px 5px 40%;
+.inpt input{
+   float: left;
     height: 30px;
     width: 200px;
-    display: inline;
+  padding: 20px;
+    margin: 10px 20px 40px 50px;
 }
 #text_form{
-     margin: 0px 0px 5px 40%;
+    margin: 50px 10px 15px 0px;
     height: 50px;
-    width: 300px;
+    width: 500px;
+    
 }
 .sub input{
      height: 40px;

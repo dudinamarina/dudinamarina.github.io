@@ -12,7 +12,7 @@
 <hedr>
     <nav>
         <div class="logo">Андрей Браун</div>
-        <div class="menu"> <ui>
+        <div class="menu"> <ul>
             <li>Обо мне</li>
             <li>Усуги</li>
             <li>Кейсы</li>
@@ -62,23 +62,24 @@
  
 
 <div class="many"><h2>Расчет стоимости</h2>
-<p>Тип сайта</p>
+
+<div class="mn"><p>Тип сайта</p>
 <p><select name="many" id="">
     <option>Пункт 1</option>
   <option>Пункт 2</option>
-</select></p>
-<p>Дизайн</p>
+</select></p></div>
+<div class="mn"><p>Дизайн</p>
  <p><select name="many2" id="">
      <option>Пункт 1</option>
   <option>Пункт 2</option>
- </select></p>
- <p>Адаптивность</p>
+ </select></p></div>
+ <div class="mn"><p>Адаптивность</p>
  <p><select name="many3" id="">
      <option>Пункт 1</option>
   <option>Пункт 2</option>
- </select></p>
- <p id="itog">Сроки</p><span class="it">0</span>
- <p id="itog2">Стоимость</p><span class="it2">0</span></div>
+ </select></p></div>
+<p id="itog">Сроки<span>0</span></p>
+ <p id="itog2">Стоимость<span>0</span></p></div>
  
  
  <div class="stistic"><h2>Немного статистики</h2>
@@ -106,14 +107,13 @@
     <form action="contact">
     <h2>Мои контакты</h2>
 <div class="cn">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Neque, eveniet!</div>
- <div class="text_cn">
- <p>Санкт-Петербург Невский проспект 11</p>
- <p>info@companyname.com</p>
- <p>+7 999 999-99-99</p></div>
+ <div class="text_cn"><p>Санкт-Петербург Невский проспект 11</p></div>
+ <div class="text_cn"><p>info@companyname.com</p></div>
+ <div class="text_cn"><p>+7 999 999-99-99</p></div>
  <div class="text_cn2"><br>Оставьте мне сообщение</div>
- <div class="form">
- <br><input type="text" name="text" placeholder="Имя">
- <br><input type="text" name="text" placeholder="E-mail"></div>
+ 
+ <div class="inpt"><input type="text" name="text" placeholder="Имя"></div>
+ <div class="inpt"><input type="text" name="text" placeholder="E-mail"></div>
  <br><textarea name="1" id="text_form" cols="30" rows="10">Сообщение</textarea>
  <div class="sub">
  <p><input type="submit" value="Отправить"></p></div>
