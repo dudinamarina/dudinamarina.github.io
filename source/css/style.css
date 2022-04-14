@@ -1,17 +1,88 @@
 body{
     font-family: arial, sans-serif;
 }
+.preloader {
+  position: fixed;
+  left: 0;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  background: #e0e0e0;
+  z-index: 1001;
+}
+
+.preloader__row {
+  position: relative;
+  top: 50%;
+  left: 50%;
+  width: 70px;
+  height: 70px;
+  margin-top: -35px;
+  margin-left: -35px;
+  text-align: center;
+  animation: preloader-rotate 5s infinite linear;
+}
+
+.preloader__item {
+  position: absolute;
+  display: inline-block;
+  top: 0;
+  background-color: #344051;
+  border-radius: 100%;
+  width: 35px;
+  height: 35px;
+  animation: preloader-bounce 5s infinite ease-in-out;
+}
+
+.preloader__item:last-child {
+  top: auto;
+  bottom: 0;
+  animation-delay: -1s;
+}
+
+@keyframes preloader-rotate {
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes preloader-bounce {
+
+  0%,
+  100% {
+    transform: scale(0);
+  }
+
+  50% {
+    transform: scale(1);
+  }
+}
+
+.loaded_hiding .preloader {
+  transition: 0.3s opacity;
+  opacity: 0;
+}
+
+.loaded .preloader {
+  display: none;
+}
 nav {
     width: 100%;
     height: 60px;
     background: #344051;
+    position: fixed;
 }
 .logo{
     color: white;
     font-size: 22px;
     line-height: 60px;
     padding-left: 150px;
-    float: left
+    float: left;
+    animation: coming 2s ease;
+}
+main{
+    width: 100%;
+    height: 100%;
 }
 .menu{
     float: left;
@@ -24,17 +95,22 @@ nav {
     margin-right: 40px;
     font-size: 12px;
     text-transform: uppercase;
+    animation: topshift 0.4s ease forwards;
+    opacity: 0;
 }
 .main{
     width: 100%;
-    height: calc(100% - 60px);
-    background: url(../img/boy.png) 90% 100%/auto 85% no-repeat, url(../img/bg.jpg) center/cover no-repeat;
+    height: 100%;
+    background: url(../img/boy.png) 90% 100%/auto 80% no-repeat, url(../img/bg.jpg) center/cover no-repeat;
 }
 .title_container{
     float: left;
     margin: 200px 0px 0px 150px;
     color: #2c384a;
     text-align: center;
+    opacity: 0;
+    animation: titlemove 1s ease forwards;
+    animation-delay: 2.4s;
 }
 .title_container h1{
     font-size: 40px;
@@ -56,6 +132,79 @@ nav {
     padding: 5px 16px;
     margin: 50px 14px 0px 14px;
 }
+
+.menu li a:visited{
+    color: white;
+}
+.menu li a{
+    transition: all 0.1s;
+    color: white;
+    transform: scale(1);
+    display: inline-block;
+}
+.menu li a:hover{
+    color: #cf7600;
+   
+}
+.menu li a:active{
+     transform: scale(1.1);
+}
+.title_container input{
+    transition: all 0.2s;
+    transform: scale(1);
+}
+
+.title_container input:hover{
+    background: #344051;
+    color: white;
+}
+.title_container input:active{
+    transform: scale(1.1);
+}
+
+@keyframes coming{
+    from{
+        opacity: 0;
+    }
+    to{
+        opacity: 1;
+    }
+    }
+@keyframes topshift{
+    from{
+       opacity: 0; 
+        margin-top: -80px;
+    }
+    to{
+        opacity: 1;
+        margin-top: 0px;
+    }
+}
+@keyframes titlemove{
+    from{
+       opacity: 0; 
+        margin-left: -300px;
+    }
+    to{
+        opacity: 1;
+        margin-left: 150px;
+    }
+.menu li:nth-child(2){
+    animation-delay: 0.4s; 
+}
+.menu li:nth-child(3){
+    animation-delay: 0.8s; 
+}
+.menu li:nth-child(4){
+    animation-delay: 1.2s; 
+}
+.menu li:nth-child(5){
+    animation-delay: 1.6s; 
+}
+.menu li:nth-child(6){
+    animation-delay: 2s; 
+}
+    
 .i h2{
     text-align: center;
     margin-top: 30px;
@@ -239,7 +388,12 @@ form{
     color: white;
     margin-top: 40px;
 }
+
+.newClass{
+    margin-left: 80px;
+}
 .inpt input{
+    display: block;
    float: left;
     height: 30px;
     width: 200px;

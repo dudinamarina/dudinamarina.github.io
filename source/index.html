@@ -8,35 +8,43 @@
 </head>
 
 <body>
-
+<div class="preloader">
+  <div class="preloader__row">
+    <div class="preloader__item"></div>
+    <div class="preloader__item"></div>
+  </div>
+</div>
 <hedr>
     <nav>
         <div class="logo">Андрей Браун</div>
         <div class="menu"> <ul>
-            <li>Обо мне</li>
-            <li>Усуги</li>
-            <li>Кейсы</li>
-        <li>Прайс</li>
-        <li>Отзывы</li>
-        <li>Контакты</li>
-        </ui></div>
+            <li><a href="#">Обо мне</a></li>
+            <li><a href="#">Усуги</a></li>
+            <li><a href="#">Кейсы</a></li>
+        <li><a href="#">Прайс</a></li>
+        <li><a href="#">Отзывы</a></li>
+        <li><a href="#">Контакты</a></li>
+        </ul></div>
     </nav>
 </hedr> 
- <div class="main"><div class="title_container">
+<main>
+ <section class="main"><div class="title_container">
      <h1>Привет <br> Я Андрей Браун</h1>
      <h4>Фул стек веб - разработчик и Andtoid - разработчик</h4>
-     <input type="submit" value="Обо мне">
-     <input type="submit" value="Мои работы">
- </div></div> 
- 
+     <input type="button" value="Обо мне">
+     <input type="button" value="Мои работы">
+ </div></section> 
+ </main>
+ <section>
  <div class="i"><h2>Обо мне</h2>
  <img src="img/%D1%84%D0%BE%D1%82%D0%BA%D0%B0.png" alt="">
  <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quidem porro vitae aliquam beatae similique facilis id fuga, officiis eveniet assumenda.</p>
  <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quidem porro vitae aliquam beatae similique facilis id fuga, officiis eveniet assumenda.</p>
  <input type="submit" value="Скачать резюме">
  </div>
+ </section>
  
- 
+ <section>
  <div class="job"><h2>Что я умею</h2>
  <div class="name"><p><b>Веб дизайн</b> </p>
 <div class="opisanie"></div><p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Provident, non.</p></div>
@@ -46,8 +54,9 @@
 <div class="opisanie">Lorem ipsum dolor sit amet, consectetur adipisicing elit.</div></div>
 <div class="name"><p><b>Маркетинг</b>
 <div class="opisanie">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Alias, animi, veniam.</div></div></div>
-
+</section>
  
+ <section>
  <div class="keis"><h2>Кейсы</h2>
   <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Officia, saepe.</p>
  <img src="img/%D1%84%D0%BE%D1%82%D0%BA%D0%B0.jpg" alt=""></div>
@@ -58,11 +67,11 @@
 <p><a href="http://www.somedomain.com">http://www.somedomain.com</a></p> 
  <p><input type="submit" value="VISIT LIVE SITE"></p></div>
  <div class="blok">Название проекта
- <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Cumque esse eveniet, officia dolorum laudantium officiis pariatur, dolorem delectus, quidem error cum distinctio blanditiis id ex!</p>
- 
+ <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Cumque esse eveniet, officia dolorum laudantium officiis pariatur, dolorem delectus, quidem error cum distinctio blanditiis id ex!</p></section>
+     
 
+<section>
 <div class="many"><h2>Расчет стоимости</h2>
-
 <div class="mn"><p>Тип сайта</p>
 <p><select name="many" id="">
     <option>Пункт 1</option>
@@ -80,8 +89,9 @@
  </select></p></div>
 <p id="itog">Сроки<span>0</span></p>
  <p id="itog2">Стоимость<span>0</span></p></div>
+ </section>
  
- 
+ <section>
  <div class="stistic"><h2>Немного статистики</h2>
   <div class="st"> <br><b>120</b>
      <p>Счасливых клиентов</p></div>  
@@ -92,8 +102,9 @@
    <div class="st">  <br><b>23</b>
      <p>Наград полученно</p></div>
      </div>
-     
+     </section>
 
+  <section>
    <div class="otziv"><h2>Отзывы</h2>
    <img src="img/boy2.png" alt="">
     <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Deserunt cumque animi sed at nulla pariatur iure itaque architecto quod mollitia aspernatur iste, dolore temporibus eaque eveniet ad inventore natus voluptate, laudantium expedita id assumenda quos. Ullam quaerat blanditiis beatae, quis.</p>
@@ -102,16 +113,16 @@
    <input type="radio" value="otz1" name="otziv">
    <input type="radio" value="otz2" name="otziv">
     <input type="radio" value="otz3" name="otziv"></div></div>
+    </section>
     
     
     <form action="contact">
     <h2>Мои контакты</h2>
 <div class="cn">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Neque, eveniet!</div>
- <div class="text_cn"><p>Санкт-Петербург Невский проспект 11</p></div>
+ <div class="text_cn newClass"><p>Санкт-Петербург Невский проспект 11</p></div>
  <div class="text_cn"><p>info@companyname.com</p></div>
  <div class="text_cn"><p>+7 999 999-99-99</p></div>
  <div class="text_cn2"><br>Оставьте мне сообщение</div>
- 
  <div class="inpt"><input type="text" name="text" placeholder="Имя"></div>
  <div class="inpt"><input type="text" name="text" placeholder="E-mail"></div>
  <br><textarea name="1" id="text_form" cols="30" rows="10">Сообщение</textarea>
@@ -119,6 +130,15 @@
  <p><input type="submit" value="Отправить"></p></div>
   </form>
   <footer><p class="fr">Copyright © 2021 Андрей Браун. Design by Web</p></footer>
-  
+   
+   <script>
+    window.onload = function () {
+      document.body.classList.add('loaded_hiding');
+      window.setTimeout(function () {
+        document.body.classList.add('loaded');
+        document.body.classList.remove('loaded_hiding');
+      }, 500);
+    }
+  </script>
 </body>
 </html>
