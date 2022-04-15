@@ -5,15 +5,13 @@
     <title>Марина Дудина</title>
     <link rel="stylesheet" href="css/reset.css">
     <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"
+  />
 </head>
 
 <body>
-<div class="preloader">
-  <div class="preloader__row">
-    <div class="preloader__item"></div>
-    <div class="preloader__item"></div>
-  </div>
-</div>
+ <div class="loading loading--full-height"></div>
 <hedr>
     <nav>
         <div class="logo">Андрей Браун</div>
@@ -34,7 +32,7 @@
      <input type="button" value="Обо мне">
      <input type="button" value="Мои работы">
  </div></section> 
- </main>
+ 
  <section>
  <div class="i"><h2>Обо мне</h2>
  <img src="img/%D1%84%D0%BE%D1%82%D0%BA%D0%B0.png" alt="">
@@ -44,8 +42,8 @@
  </div>
  </section>
  
- <section>
- <div class="job"><h2>Что я умею</h2>
+ <section class="j">
+ <div class="job"><h2 class="animate__animated animate__bounceInRight">Что я умею</h2>
  <div class="name"><p><b>Веб дизайн</b> </p>
 <div class="opisanie"></div><p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Provident, non.</p></div>
 <div class="name"><b>Разработка</b>
@@ -67,10 +65,12 @@
 <p><a href="http://www.somedomain.com">http://www.somedomain.com</a></p> 
  <p><input type="submit" value="VISIT LIVE SITE"></p></div>
  <div class="blok">Название проекта
- <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Cumque esse eveniet, officia dolorum laudantium officiis pariatur, dolorem delectus, quidem error cum distinctio blanditiis id ex!</p></section>
+ <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Cumque esse eveniet, officia dolorum laudantium officiis pariatur, dolorem delectus, quidem error cum distinctio blanditiis id ex!</p>
+    </section>
      
 
 <section>
+<div class="ramka-6">
 <div class="many"><h2>Расчет стоимости</h2>
 <div class="mn"><p>Тип сайта</p>
 <p><select name="many" id="">
@@ -89,10 +89,13 @@
  </select></p></div>
 <p id="itog">Сроки<span>0</span></p>
  <p id="itog2">Стоимость<span>0</span></p></div>
+ </div>
  </section>
  
  <section>
- <div class="stistic"><h2>Немного статистики</h2>
+ <div class="parallax">
+ <div class="stistic">
+ <h2>Немного статистики</h2>
   <div class="st"> <br><b>120</b>
      <p>Счасливых клиентов</p></div>  
    <div class="st"><br><b>4600</b>
@@ -101,7 +104,7 @@
      <p>Проектов завершено</p></div> 
    <div class="st">  <br><b>23</b>
      <p>Наград полученно</p></div>
-     </div>
+     </div></div>
      </section>
 
   <section>
@@ -124,21 +127,13 @@
  <div class="text_cn"><p>+7 999 999-99-99</p></div>
  <div class="text_cn2"><br>Оставьте мне сообщение</div>
  <div class="inpt"><input type="text" name="text" placeholder="Имя"></div>
- <div class="inpt"><input type="text" name="text" placeholder="E-mail"></div>
+ <div class="inpt"><input type="email" required></div>
  <br><textarea name="1" id="text_form" cols="30" rows="10">Сообщение</textarea>
  <div class="sub">
  <p><input type="submit" value="Отправить"></p></div>
   </form>
+  
   <footer><p class="fr">Copyright © 2021 Андрей Браун. Design by Web</p></footer>
    
-   <script>
-    window.onload = function () {
-      document.body.classList.add('loaded_hiding');
-      window.setTimeout(function () {
-        document.body.classList.add('loaded');
-        document.body.classList.remove('loaded_hiding');
-      }, 500);
-    }
-  </script>
 </body>
 </html>

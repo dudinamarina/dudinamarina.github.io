@@ -1,70 +1,35 @@
 body{
     font-family: arial, sans-serif;
 }
-.preloader {
-  position: fixed;
-  left: 0;
-  top: 0;
-  right: 0;
-  bottom: 0;
-  background: #e0e0e0;
-  z-index: 1001;
+.loading {
+  display: flex;
+  justify-content: center;
 }
 
-.preloader__row {
-  position: relative;
-  top: 50%;
-  left: 50%;
-  width: 70px;
-  height: 70px;
-  margin-top: -35px;
-  margin-left: -35px;
-  text-align: center;
-  animation: preloader-rotate 5s infinite linear;
+.loading--full-height {
+  align-items: center;
+  height: 100%;
 }
 
-.preloader__item {
-  position: absolute;
-  display: inline-block;
-  top: 0;
-  background-color: #344051;
-  border-radius: 100%;
-  width: 35px;
-  height: 35px;
-  animation: preloader-bounce 5s infinite ease-in-out;
+.loading::after {
+  content: "";
+  width: 75px;
+  height: 75px;
+  border: 10px solid #dddddd;
+  border-top-color:  #344051;
+  border-radius: 50%;
+  transform: rotate(0.16turn);
+  animation: loading 1s ease infinite;
 }
 
-.preloader__item:last-child {
-  top: auto;
-  bottom: 0;
-  animation-delay: -1s;
-}
-
-@keyframes preloader-rotate {
-  100% {
-    transform: rotate(360deg);
+@keyframes loading {
+  from {
+    transform: rotate(0turn);
   }
-}
-
-@keyframes preloader-bounce {
-
-  0%,
-  100% {
-    transform: scale(0);
+  
+  to {
+    transform: rotate(1turn);
   }
-
-  50% {
-    transform: scale(1);
-  }
-}
-
-.loaded_hiding .preloader {
-  transition: 0.3s opacity;
-  opacity: 0;
-}
-
-.loaded .preloader {
-  display: none;
 }
 nav {
     width: 100%;
@@ -189,6 +154,7 @@ main{
         opacity: 1;
         margin-left: 150px;
     }
+}
 .menu li:nth-child(2){
     animation-delay: 0.4s; 
 }
@@ -227,14 +193,23 @@ main{
     padding: 5px 16px;
     margin: 10px 14px 0px 45%;
 }
+
+.i input:hover{
+    background: #344051;
+    color: white;
+}
+.i input:active{
+    transform: scale(1.1);
+}
 .job{
     background: url(../img/bg-2.jpg) center;
     background-size: contain;
-    
 }
+
 div.job{
     height: 300px;
 }
+
 .job h2{
     text-align: center;
     margin-top: 60px;
@@ -243,6 +218,7 @@ div.job{
     padding: 40px;
 }
 
+
 .name{
     float: left;
     line-height: 30px;
@@ -250,7 +226,7 @@ div.job{
     width: 310px;
     margin-right: 0px;
     text-align: center;
-    
+    margin-left: 30px;
 }
 
 .keis h2{
@@ -267,6 +243,17 @@ div.job{
 .keis img{
     margin: 50px;
 }
+
+ a:link {
+    color: #0000d0; 
+   }
+   a:visited {
+    color: #900060; 
+   }
+   a:active {
+    color: #f00; 
+   } 
+
 .text_keis input{
     height: 30px;
     text-align: center;
@@ -277,6 +264,27 @@ div.job{
     font-size: 13px;
     padding: 5px 16px;
     margin: 10px 20px 30px 0px;
+    animation: puls 3s infinite;
+}
+
+@keyframes puls{
+    0%{
+        opacity: 0;
+    }
+    50%{
+        opacity: 1;
+    }
+    100%{
+        opacity: 0;
+    }
+}
+
+.text_keis input:hover{
+    background: #344051;
+    color: white;
+}
+.text_keis input:active{
+    transform: scale(1.1);
 }
 .text_keis p{
     margin: 0px 0px 5px 40px;
@@ -288,14 +296,50 @@ div.job{
 
 .many h2{
     text-align: center;
-    margin-top: 80px;
     font-size: 25px;
     padding: 40px;
+}
+.ramka-6 {
+    width: 1000px;
+    height: 400px;
+    margin: 100px 0px 0px 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;          
+    background-repeat: no-repeat;
+    background-image:   linear-gradient(to right, #BFE2FF 100%, #BFE2FF 100%),
+        linear-gradient(to bottom, #BFE2FF 100%, #BFE2FF 100%),
+        linear-gradient(to right, #BFE2FF 100%, #BFE2FF 100%),
+        linear-gradient(to bottom, #BFE2FF 100%, #BFE2FF 100%);
+    background-size:    100% 6px, 6px 100%, 100% 6px, 6px 100%;
+    background-position:    0 0, 100% 0, 100% 100%, 0 100%;
+    animation: anim-ramka-6 1.25s cubic-bezier(0.19, 1, 0.22, 1) 1;
+    animation-play-state: paused;
+}
+.ramka-6:hover {
+    animation-play-state: running;
+}
+@keyframes anim-ramka-6 {
+    0% {
+        background-size:    0 6px, 6px 0, 0 6px, 6px 0;
+    }
+    25% {
+        background-size:    100% 6px, 6px 0, 0 6px, 6px 0;
+    }
+    50% {
+        background-size:    100% 6px, 6px 100%, 0 6px, 6px 0;
+    }
+    75% {
+        background-size:    100% 6px, 6px 100%, 100% 6px, 6px 0;
+    }
+    100% {
+        background-size:    100% 6px, 6px 100%, 100% 6px, 6px 100%;
+    }
 }
 
 .mn{
     display: block;
-    margin: 10px 30px 20px 30%;
+    
     text-transform: uppercase;
 }
 #itog{
@@ -307,14 +351,23 @@ div.job{
     text-transform: capitalize;
 }
 
-
+.parallax{
+    background: url(../img/bg3.jpg);
+    height: 400px; 
+    background-attachment: fixed;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    margin-top: 80px;
+}
 .stistic h2{
   text-align: center;
     margin-top: 80px;
     text-transform: uppercase;
     font-size: 25px;
-    padding: 60px; 
+    padding: 80px; 
 }
+
 div.stistic{
    height: 300px;
 }
@@ -325,10 +378,23 @@ div.stistic{
     width: 310px;
     margin-right: 0px;
     text-align: center;
-    margin-bottom: 60px;
+    margin-bottom: 80px;
+    animation: scale 4s infinite;
 }
-.stistic{
-background: url(../img/bg3.jpg) 100%;
+
+@keyframes scale{
+    0%{
+        transform: scale(0.9);
+        opacity: 0.5;
+    }
+    50%{
+        transform: scale(1.2);
+        opacity: 1;
+    }
+    100%{
+        transform: scale(0.9);
+        opacity: 0.5;
+    }
 }
 
 .otziv h2{
@@ -338,6 +404,7 @@ background: url(../img/bg3.jpg) 100%;
     font-size: 25px;
     padding: 30px; 
 }
+
 img{
     margin: 30px 14px 20px 46%;
 }
@@ -416,6 +483,25 @@ form{
     font-size: 13px;
     padding: 5px 16px;
     margin: 10px 14px 40px 48%;
+    animation: pulse 4s infinite;
+}
+@keyframes pulse{
+    0%{
+        opacity: 0;
+    }
+    50%{
+        opacity: 1;
+    }
+    100%{
+        opacity: 0;
+    }
+}
+.sub input:hover{
+    background: #344051;
+    color: white;
+}
+.sub input:active{
+    transform: scale(1.1);
 }
 footer{
     width: 100%;
