@@ -135,12 +135,18 @@ h1 em { font-style: italic; color: var(--wine); }
 .star svg { display: block; width: 100%; height: auto; }
 .star .ring { fill: none; stroke: var(--sage); stroke-width: 2; }
 .star .ring.dash { stroke-dasharray: 3 9; }
-.star .lines { fill: none; stroke: var(--ink); stroke-width: 2.4; stroke-linejoin: round; stroke-dasharray: 1150; animation: draw 10s ease-in-out infinite; }
+.star .lines { fill: none; stroke: var(--ink); stroke-width: 2.4; stroke-linejoin: round; stroke-dasharray: 1150; animation: draw 10s cubic-bezier(.45, 0, .55, 1) infinite; }
 .star .pt { fill: var(--wine); }
 .star .pt.s { fill: var(--sage-deep); }
 .star .ring.dash { transform-origin: 160px 160px; animation: spin 10s linear infinite; }
-/* Цикл 10 с: звезда прорисовывается, держится и стирается в том же направлении */
-@keyframes draw { 0% { stroke-dashoffset: 1150; } 40%, 65% { stroke-dashoffset: 0; } 100% { stroke-dashoffset: -1150; } }
+/* Цикл 10 с: звезда мягко прорисовывается, коротко держится и так же мягко стирается */
+@keyframes draw {
+  0% { stroke-dashoffset: 1150; opacity: 0; }
+  6% { opacity: 1; }
+  46%, 54% { stroke-dashoffset: 0; opacity: 1; }
+  94% { opacity: 1; }
+  100% { stroke-dashoffset: -1150; opacity: 0; }
+}
 @keyframes spin { to { transform: rotate(360deg); } }
 
 /* Параллакс: слои первого экрана и круг в «Опыте» движутся с разной скоростью при прокрутке (--py задаёт скрипт) */
