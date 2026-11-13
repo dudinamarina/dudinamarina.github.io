@@ -135,10 +135,13 @@ h1 em { font-style: italic; color: var(--wine); }
 .star svg { display: block; width: 100%; height: auto; }
 .star .ring { fill: none; stroke: var(--sage); stroke-width: 2; }
 .star .ring.dash { stroke-dasharray: 3 9; }
-.star .lines { fill: none; stroke: var(--ink); stroke-width: 2.4; stroke-linejoin: round; stroke-dasharray: 1150; animation: draw 2.6s ease-out both; }
+.star .lines { fill: none; stroke: var(--ink); stroke-width: 2.4; stroke-linejoin: round; stroke-dasharray: 1150; animation: draw 10s ease-in-out infinite; }
 .star .pt { fill: var(--wine); }
 .star .pt.s { fill: var(--sage-deep); }
-@keyframes draw { from { stroke-dashoffset: 1150; } to { stroke-dashoffset: 0; } }
+.star .ring.dash { transform-origin: 160px 160px; animation: spin 10s linear infinite; }
+/* Цикл 10 с: звезда прорисовывается, держится и стирается в том же направлении */
+@keyframes draw { 0% { stroke-dashoffset: 1150; } 40%, 65% { stroke-dashoffset: 0; } 100% { stroke-dashoffset: -1150; } }
+@keyframes spin { to { transform: rotate(360deg); } }
 
 /* Параллакс: слои первого экрана и круг в «Опыте» движутся с разной скоростью при прокрутке (--py задаёт скрипт) */
 .hero canvas { transform: translate3d(0, calc(var(--py, 0) * .32px), 0); }
@@ -287,7 +290,7 @@ footer .wrap { display: flex; flex-wrap: wrap; justify-content: space-between; g
 }
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
-  .star .lines { animation: none; }
+  .star .lines, .star .ring.dash { animation: none; }
   .btn, .btn.ghost svg, .service, .edu-card { transition: none; }
   .service:hover, .edu-card:hover { transform: none; }
 }
