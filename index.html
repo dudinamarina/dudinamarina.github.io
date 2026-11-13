@@ -1,0 +1,568 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="color-scheme" content="light">
+<title>Анастасия Дьяконова</title>
+<meta name="description" content="Анастасия Дьяконова — психолог-терапевт. Интегративный подход, цифровая психология и трансформационные игры.">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Golos+Text:wght@400;500;600&family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,400;1,500&display=swap">
+<style>
+body { margin: 0; } img { max-width: 100%; }
+/* Layout: left-aligned editorial column; each section is a narrow label rail + wide content, the star of the «Звезда» method is the only ornament. */
+:root {
+  --bg: #FAF6F0;
+  --surface: #F2EAE0;
+  --ink: #34343B;
+  --muted: #6F6A6B;
+  --sage: #8FA596;
+  --sage-deep: #5C7565;
+  --blush: #DDB9B3;
+  --blush-soft: #F4E3DE;
+  --wine: #7A2335;
+  --btn-bg: #7A2335;
+  --btn-bg-hover: #631A2A;
+  --btn-fg: #FBF4EE;
+  --line: rgba(52, 52, 59, .14);
+  --band: var(--bg);
+  --band-ink: var(--ink);
+  --band-muted: var(--muted);
+  --band-line: var(--line);
+  --band-accent: var(--wine);
+  --display: "Playfair Display", "PT Serif", Georgia, "Times New Roman", serif;
+  --body: "Golos Text", Inter, "Segoe UI", system-ui, -apple-system, Arial, sans-serif;
+}
+*, *::before, *::after { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body {
+  background: var(--bg); color: var(--ink);
+  font-family: var(--body); font-size: 1.0625rem; line-height: 1.65;
+  -webkit-font-smoothing: antialiased;
+}
+body::before {
+  content: ""; position: fixed; inset: 0 0 auto;
+  height: env(safe-area-inset-top, 0px); z-index: 10; background: var(--bg);
+}
+h1, h2, h3, p, ul, blockquote, figure { margin: 0; }
+ul { padding: 0; list-style: none; }
+a { color: inherit; }
+:focus-visible { outline: 2px solid var(--wine); outline-offset: 3px; border-radius: 4px; }
+
+.wrap {
+  max-width: 70rem; margin-inline: auto;
+  padding-left: max(20px, env(safe-area-inset-left, 0px));
+  padding-right: max(20px, env(safe-area-inset-right, 0px));
+}
+
+/* Header */
+.top {
+  position: sticky; top: env(safe-area-inset-top, 0px); z-index: 9;
+  background: color-mix(in srgb, var(--bg) 92%, transparent);
+  backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px);
+  border-bottom: 1px solid var(--line);
+}
+.top .wrap { display: flex; align-items: center; gap: 1.5rem; padding-block: .8rem; }
+.brand { font-family: var(--display); font-size: 1.2rem; text-decoration: none; white-space: nowrap; margin-right: auto; }
+.nav { display: flex; gap: 1.4rem; font-size: .92rem; }
+.nav a { text-decoration: none; color: var(--muted); transition: color .2s; }
+.nav a:hover { color: var(--ink); }
+
+/* Кнопки: тонкая градиентная оболочка, прописные буквы с разрядкой */
+.btn {
+  display: inline-flex; align-items: center; justify-content: center; gap: .6rem;
+  border: 1px solid transparent; border-radius: 999px;
+  background: linear-gradient(var(--btn-bg), var(--btn-bg)) padding-box,
+              linear-gradient(135deg, var(--blush), transparent 70%) border-box;
+  color: var(--btn-fg); text-decoration: none; white-space: nowrap;
+  font: 500 .76rem/1.2 var(--body); letter-spacing: .16em; text-transform: uppercase;
+  padding: 1.05rem 2.2rem;
+  box-shadow: 0 14px 34px color-mix(in srgb, var(--btn-bg) 28%, transparent);
+  transition: background .25s, color .25s, box-shadow .25s;
+}
+.btn:hover {
+  background: linear-gradient(var(--btn-bg-hover), var(--btn-bg-hover)) padding-box,
+              linear-gradient(135deg, var(--blush), transparent 70%) border-box;
+}
+.btn.ghost, .btn.small {
+  background: linear-gradient(color-mix(in srgb, var(--bg) 82%, transparent), color-mix(in srgb, var(--bg) 82%, transparent)) padding-box,
+              linear-gradient(135deg, var(--wine), transparent 85%) border-box;
+  -webkit-backdrop-filter: blur(8px); backdrop-filter: blur(8px);
+  box-shadow: 0 2px 8px color-mix(in srgb, var(--ink) 10%, transparent);
+}
+.btn.ghost { color: var(--ink); }
+.btn.ghost:hover {
+  background: linear-gradient(var(--surface), var(--surface)) padding-box,
+              linear-gradient(135deg, var(--wine), transparent 85%) border-box;
+}
+.btn.ghost svg { width: 1.1rem; height: 1.1rem; fill: none; stroke: var(--wine); stroke-width: 1.5; stroke-linecap: round; stroke-linejoin: round; opacity: .75; transition: transform .25s, opacity .25s; }
+.btn.ghost:hover svg { transform: translateX(4px); opacity: 1; }
+.btn.small { color: var(--wine); padding: .7rem 1.4rem; font-size: .7rem; }
+.btn.small:hover {
+  color: var(--btn-fg);
+  background: linear-gradient(var(--btn-bg), var(--btn-bg)) padding-box,
+              linear-gradient(135deg, var(--blush), transparent 70%) border-box;
+}
+.link { color: var(--ink); text-decoration: underline; text-decoration-color: var(--blush); text-decoration-thickness: 2px; text-underline-offset: 5px; }
+.link:hover { text-decoration-color: var(--wine); }
+
+/* Hero */
+.hero { position: relative; overflow: hidden; }
+.hero canvas { position: absolute; inset: 0; width: 100%; height: 100%; pointer-events: none; }
+.hero .wrap { position: relative; }
+.hero .wrap {
+  display: grid; grid-template-columns: minmax(0, 1.25fr) minmax(0, .75fr);
+  gap: 3rem; align-items: center; padding-block: clamp(3.5rem, 8vw, 6.5rem);
+}
+.eyebrow { font-size: .8rem; letter-spacing: .16em; text-transform: uppercase; color: var(--sage-deep); font-weight: 500; }
+h1 {
+  font-family: var(--display); font-weight: 400;
+  font-size: clamp(2.7rem, 7.2vw, 5.2rem); line-height: 1.04; letter-spacing: -.01em;
+  margin-top: 1.1rem; text-wrap: balance;
+}
+h1 em { font-style: italic; color: var(--wine); }
+.lead { font-size: clamp(1.1rem, 1.6vw, 1.3rem); color: var(--muted); max-width: 32rem; margin-top: 1.6rem; }
+.hero-actions { display: flex; flex-wrap: wrap; align-items: center; gap: 1.2rem 1.8rem; margin-top: 2.4rem; }
+.portrait { position: relative; justify-self: end; width: min(100%, 24rem); }
+.portrait::before {
+  content: ""; position: absolute; inset: 12% -7% -4% 14%;
+  background: var(--blush-soft); border-radius: 50% 46% 52% 48% / 48% 52% 46% 54%;
+}
+.portrait img {
+  position: relative; display: block; width: 100%; height: auto; aspect-ratio: 3 / 4;
+  object-fit: cover; object-position: 50% 12%; border-radius: 999px 999px 1.25rem 1.25rem;
+}
+.star { position: absolute; left: -2.4rem; bottom: -1.8rem; width: 8.5rem; padding: .45rem; background: var(--bg); border-radius: 50%; }
+.star svg { display: block; width: 100%; height: auto; }
+.star .ring { fill: none; stroke: var(--sage); stroke-width: 2; }
+.star .ring.dash { stroke-dasharray: 3 9; }
+.star .lines { fill: none; stroke: var(--ink); stroke-width: 2.4; stroke-linejoin: round; stroke-dasharray: 1150; animation: draw 2.6s ease-out both; }
+.star .pt { fill: var(--wine); }
+.star .pt.s { fill: var(--sage-deep); }
+@keyframes draw { from { stroke-dashoffset: 1150; } to { stroke-dashoffset: 0; } }
+
+/* Sections */
+.section { border-top: 1px solid var(--line); }
+.section .wrap {
+  display: grid; grid-template-columns: 13rem minmax(0, 1fr);
+  gap: 2rem 3rem; padding-block: clamp(3rem, 7vw, 5.5rem);
+}
+.rail { font-family: var(--display); font-style: italic; font-size: 1.05rem; color: var(--sage-deep); padding-top: .5rem; }
+h2 { font-family: var(--display); font-weight: 400; font-size: clamp(1.8rem, 3.6vw, 2.6rem); line-height: 1.15; text-wrap: balance; max-width: 22ch; }
+.body { display: grid; grid-template-columns: minmax(0, 1fr); gap: 1.6rem; min-width: 0; }
+.body p { max-width: 40rem; }
+
+.quote {
+  font-family: var(--display); font-size: clamp(1.5rem, 3vw, 2.15rem); line-height: 1.3;
+  max-width: 24ch; text-wrap: balance;
+}
+.quote em { color: var(--wine); }
+.methods { display: flex; flex-wrap: wrap; gap: .5rem; }
+.methods li { font-size: .88rem; padding: .35rem .9rem; border: 1px solid var(--sage); border-radius: 999px; color: var(--sage-deep); }
+
+.creds { display: grid; max-width: 44rem; }
+.creds li { display: grid; grid-template-columns: 1.4rem minmax(0, 1fr); gap: .8rem; padding-block: 1rem; border-bottom: 1px solid var(--line); }
+.creds li:first-child { border-top: 1px solid var(--line); }
+.creds svg { width: 1rem; height: 1rem; margin-top: .4rem; fill: var(--sage); }
+
+/* Опыт: крупная цифра, главная мысль и плитки запросов */
+.band { background: var(--band); color: var(--band-ink); position: relative; overflow: hidden; }
+.band::after {
+  content: ""; position: absolute; right: -9rem; top: -9rem; width: 30rem; height: 30rem; border-radius: 50%;
+  border: 1px solid var(--blush); box-shadow: 0 0 0 3.5rem color-mix(in srgb, var(--blush-soft) 55%, transparent), 0 0 0 7rem color-mix(in srgb, var(--blush-soft) 30%, transparent); pointer-events: none;
+}
+.band .wrap { position: relative; z-index: 1; }
+.band .rail { color: var(--sage-deep); }
+.exp-top { display: grid; grid-template-columns: auto minmax(0, 1fr); gap: 1.5rem 3rem; align-items: center; }
+.years { font-family: var(--display); font-variant-numeric: lining-nums; line-height: 1; font-size: clamp(6rem, 15vw, 11rem); color: var(--wine); letter-spacing: -.02em; }
+.years sup { font-size: .45em; vertical-align: top; color: var(--sage); margin-left: .05em; }
+.years small { display: block; font: 500 .78rem/1.4 var(--body); letter-spacing: .18em; text-transform: uppercase; color: var(--band-muted); margin-top: 1rem; }
+.exp-quote { font-family: var(--display); font-size: clamp(1.6rem, 3.4vw, 2.5rem); line-height: 1.22; text-wrap: balance; max-width: 20ch; }
+.exp-quote em { color: var(--band-accent); }
+.band .body p.exp-lead { color: var(--band-muted); max-width: 38rem; }
+.formats { display: flex; flex-wrap: wrap; gap: .5rem; margin-top: .2rem; }
+.formats li { font-size: .74rem; letter-spacing: .14em; text-transform: uppercase; padding: .5rem 1rem; color: var(--sage-deep); border: 1px solid var(--sage); border-radius: 999px; }
+.asks-title { font-size: .78rem; letter-spacing: .18em; text-transform: uppercase; color: var(--sage-deep); margin-top: 1rem; }
+.asks { display: grid; grid-template-columns: repeat(auto-fit, minmax(13rem, 1fr)); gap: 1rem; }
+.asks li {
+  display: grid; gap: .9rem; align-content: start; padding: 1.5rem 1.4rem 1.6rem; border-radius: 1.2rem;
+  background: var(--surface); border: 1px solid transparent;
+  font-family: var(--display); font-size: 1.25rem; line-height: 1.3;
+}
+.asks svg { width: 1.1rem; height: 1.1rem; fill: var(--band-accent); }
+.exp-close { display: grid; grid-template-columns: 2.5rem minmax(0, 1fr); gap: 1rem; align-items: baseline; padding-top: 1.6rem; border-top: 1px solid var(--band-line); font-size: 1.1rem; max-width: 44rem; }
+.exp-close::before { content: ""; height: 1px; background: var(--band-accent); transform: translateY(-.35rem); }
+
+/* Services */
+.tinted { background: var(--surface); }
+.services { display: grid; grid-template-columns: repeat(6, minmax(0, 1fr)); gap: 1.1rem; }
+.service {
+  grid-column: span 2; display: flex; flex-direction: column; align-items: center; text-align: center; gap: .55rem;
+  background: var(--bg); border-radius: 1.4rem; padding: 2.2rem 1.5rem 1.9rem;
+  box-shadow: 0 1px 0 var(--line), 0 18px 40px -28px color-mix(in srgb, var(--wine) 45%, transparent);
+  transition: transform .3s, box-shadow .3s;
+}
+.service:nth-child(-n+2) { grid-column: span 3; }
+.service:hover { transform: translateY(-4px); box-shadow: 0 1px 0 var(--line), 0 26px 46px -26px color-mix(in srgb, var(--wine) 60%, transparent); }
+.service h3 { order: 1; font: 600 .98rem/1.35 var(--body); letter-spacing: .14em; text-transform: uppercase; text-wrap: balance; }
+.service h3 span { display: block; font: 400 .82rem/1.4 var(--body); letter-spacing: .02em; text-transform: none; color: var(--sage-deep); margin-top: .35rem; }
+.dur { order: 2; font-style: italic; font-size: .9rem; color: var(--muted); }
+.dur::before { content: "("; } .dur::after { content: ")"; }
+.service p { order: 3; color: var(--muted); font-size: .95rem; line-height: 1.55; max-width: 26rem; margin-top: .5rem; }
+.price {
+  order: 4; margin-top: auto; padding-top: 1.3rem; font-family: var(--display); font-weight: 500;
+  font-size: 1.75rem; line-height: 1; color: var(--wine); white-space: nowrap; font-variant-numeric: lining-nums;
+}
+.price::before { content: ""; display: block; width: 2.2rem; height: 1px; background: var(--blush); margin: 0 auto 1.2rem; }
+.note { font-size: .95rem; color: var(--muted); }
+
+.intro {
+  display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 1.5rem 2.5rem; align-items: center;
+  background: var(--blush-soft); border-radius: 1.5rem; padding: clamp(1.6rem, 4vw, 2.6rem);
+}
+.intro h3 { font-family: var(--display); font-weight: 400; font-size: clamp(1.4rem, 2.6vw, 1.85rem); line-height: 1.2; }
+.intro p { color: var(--muted); margin-top: .5rem; }
+
+/* Reviews */
+.reviews { columns: 2 19rem; column-gap: 1.2rem; }
+.review {
+  break-inside: avoid; margin: 0 0 1.2rem; padding: 1.9rem 1.8rem 1.6rem;
+  background: var(--surface); border-radius: 1.4rem; position: relative;
+}
+.review:nth-child(odd) { background: var(--blush-soft); }
+.review::before { content: "“"; display: block; font: 400 3.6rem/.6 var(--display); color: var(--wine); height: 1.5rem; }
+.review blockquote { display: grid; gap: .8rem; font-size: 1rem; line-height: 1.6; }
+.review blockquote .big { font-family: var(--display); font-size: 1.3rem; line-height: 1.35; }
+.review figcaption { margin-top: 1.2rem; font-size: .74rem; letter-spacing: .14em; text-transform: uppercase; color: var(--sage-deep); }
+
+/* Contact */
+.contacts { display: grid; grid-template-columns: repeat(auto-fit, minmax(13rem, 1fr)); gap: 1.5rem 2.5rem; max-width: 46rem; }
+.contacts dt { font-size: .78rem; letter-spacing: .14em; text-transform: uppercase; color: var(--muted); }
+.contacts dd a { text-decoration-color: var(--blush); text-underline-offset: 5px; }
+.contacts dd { margin: .3rem 0 0; font-family: var(--display); font-size: 1.3rem; user-select: all; overflow-wrap: anywhere; }
+dl { margin: 0; }
+
+footer .wrap { display: flex; flex-wrap: wrap; justify-content: space-between; gap: .5rem 2rem; padding-block: 1.8rem; font-size: .85rem; color: var(--muted); border-top: 1px solid var(--line); }
+
+@media (max-width: 980px) { .nav { display: none; } }
+@media (max-width: 860px) {
+  .nav { display: none; }
+  .hero .wrap { grid-template-columns: 1fr; gap: 2rem; }
+  .portrait { justify-self: start; width: min(78%, 19rem); order: -1; margin-bottom: 1.5rem; }
+  .star { left: auto; right: -1.6rem; width: 6.5rem; }
+  .section .wrap { grid-template-columns: minmax(0, 1fr); gap: 1rem; }
+  .rail { padding-top: 0; }
+  .services { grid-template-columns: minmax(0, 1fr); }
+  .service, .service:nth-child(-n+2) { grid-column: auto; }
+  .intro { grid-template-columns: minmax(0, 1fr); }
+  .btn { white-space: normal; text-align: center; }
+}
+@media (max-width: 480px) {
+  .exp-top { grid-template-columns: minmax(0, 1fr); }
+  .brand { font-size: 1.05rem; }
+}
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  .star .lines { animation: none; }
+  .btn, .btn.ghost svg, .service { transition: none; }
+  .service:hover { transform: none; }
+}
+</style>
+</head>
+<body>
+
+<header class="top">
+  <div class="wrap">
+    <a class="brand" href="#top">Анастасия Дьяконова</a>
+    <nav class="nav" aria-label="Разделы сайта">
+      <a href="#approach">Подход</a>
+      <a href="#education">Образование</a>
+      <a href="#experience">Опыт</a>
+      <a href="#services">Услуги и цены</a>
+      <a href="#reviews">Отзывы</a>
+      <a href="#contact">Контакты</a>
+    </nav>
+    <a class="btn small" href="https://t.me/Dyakonova_Anastasya" target="_blank" rel="noopener">Записаться</a>
+  </div>
+</header>
+
+<main id="top">
+  <section class="hero">
+    <canvas id="constellation" aria-hidden="true"></canvas>
+    <div class="wrap">
+      <div>
+        <p class="eyebrow">Психолог-терапевт</p>
+        <h1>Анастасия <em>Дьяконова</em></h1>
+        <p class="lead">Интегративный подход, цифровая психология и трансформационные игры.</p>
+        <div class="hero-actions">
+          <a class="btn" href="https://t.me/Dyakonova_Anastasya" target="_blank" rel="noopener">Записаться на знакомство</a>
+          <a class="btn ghost" href="#services">Услуги и стоимость<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 12h16M14 6l6 6-6 6"/></svg></a>
+        </div>
+      </div>
+      <figure class="portrait">
+        <img src="portrait.jpg" alt="Анастасия Дьяконова, психолог-терапевт" width="960" height="1280">
+        <div class="star" aria-hidden="true"><svg viewBox="0 0 320 320" role="presentation">
+          <circle class="ring dash" cx="160" cy="160" r="150"/>
+          <circle class="ring" cx="160" cy="160" r="120"/>
+          <polygon class="lines" points="160,40 230.5,257.1 45.9,122.9 274.1,122.9 89.5,257.1"/>
+          <circle class="pt" cx="160" cy="40" r="10"/>
+          <circle class="pt s" cx="274.1" cy="122.9" r="8"/>
+          <circle class="pt s" cx="230.5" cy="257.1" r="8"/>
+          <circle class="pt s" cx="89.5" cy="257.1" r="8"/>
+          <circle class="pt s" cx="45.9" cy="122.9" r="8"/>
+        </svg></div>
+      </figure>
+    </div>
+  </section>
+
+  <section class="section" id="approach">
+    <div class="wrap">
+      <p class="rail">Подход</p>
+      <div class="body">
+        <blockquote class="quote">Я — психолог, который не делит человека на <em>«правильного»</em> и <em>«неправильного»</em>.</blockquote>
+        <p>Мой метод — это интегративный подход: я соединяю доказательную психологию (КПТ, позитивная психология, гештальт-подход) с инструментами цифровой психологии и нумерологии.</p>
+        <p>Это позволяет посмотреть на ваш запрос объёмно — не только через призму поведения, но и через символический язык вашей личности. А формат трансформационной игры даёт удивительную возможность за несколько часов прожить и проработать то, на что в классической терапии уходят месяцы.</p>
+        <ul class="methods" aria-label="Методы">
+          <li>КПТ</li>
+          <li>Позитивная психология</li>
+          <li>Гештальт-подход</li>
+          <li>Цифровая психология</li>
+          <li>Трансформационные игры</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="education">
+    <div class="wrap">
+      <p class="rail">Образование и квалификация</p>
+      <div class="body">
+        <h2>Фундаментальное образование и постоянное развитие</h2>
+        <ul class="creds">
+          <li><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M10 0l2.4 7.6H20l-6.2 4.6 2.4 7.8L10 15.2 3.8 20l2.4-7.8L0 7.6h7.6z"/></svg><span>Дипломированный психолог-консультант, специалист по цифровой психологии.</span></li>
+          <li><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M10 0l2.4 7.6H20l-6.2 4.6 2.4 7.8L10 15.2 3.8 20l2.4-7.8L0 7.6h7.6z"/></svg><span>Сертифицированный игропрактик — ведущая трансформационных игр.</span></li>
+          <li><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M10 0l2.4 7.6H20l-6.2 4.6 2.4 7.8L10 15.2 3.8 20l2.4-7.8L0 7.6h7.6z"/></svg><span>Магистрант психологических наук (обучение продолжается).</span></li>
+          <li><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M10 0l2.4 7.6H20l-6.2 4.6 2.4 7.8L10 15.2 3.8 20l2.4-7.8L0 7.6h7.6z"/></svg><span>Регулярно повышаю квалификацию в области КПТ, позитивной психологии и коучинга.</span></li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section class="section band" id="experience">
+    <div class="wrap">
+      <p class="rail">Опыт работы</p>
+      <div class="body">
+        <div class="exp-top">
+          <p class="years">3<sup>+</sup><small>года практики</small></p>
+          <p class="exp-quote">Не существует одного <em>универсального</em> пути к себе.</p>
+        </div>
+        <p class="exp-lead">Более трёх лет я сопровождаю клиентов в индивидуальном и групповом формате — и за это время убедилась в этом на практике.</p>
+        <ul class="formats" aria-label="Форматы">
+          <li>Индивидуально</li>
+          <li>В группе</li>
+        </ul>
+        <p class="asks-title">С какими запросами работаю</p>
+        <ul class="asks">
+          <li><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M10 0l2.4 7.6H20l-6.2 4.6 2.4 7.8L10 15.2 3.8 20l2.4-7.8L0 7.6h7.6z"/></svg>Поиск смысла и жизненных ориентиров</li>
+          <li><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M10 0l2.4 7.6H20l-6.2 4.6 2.4 7.8L10 15.2 3.8 20l2.4-7.8L0 7.6h7.6z"/></svg>Выстраивание границ</li>
+          <li><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M10 0l2.4 7.6H20l-6.2 4.6 2.4 7.8L10 15.2 3.8 20l2.4-7.8L0 7.6h7.6z"/></svg>Проработка глубинных сценариев</li>
+        </ul>
+        <p class="exp-close">Я работаю бережно и структурно, помогая клиенту не просто «понять» проблему, а прожить трансформацию.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="section tinted" id="services">
+    <div class="wrap">
+      <p class="rail">Услуги и стоимость</p>
+      <div class="body">
+        <h2>Форматы работы</h2>
+        <p class="note">Я верю в прозрачность, поэтому стоимость услуг указана открыто.</p>
+        <div class="services">
+          <article class="service">
+            <h3>Личная терапия<span>Интегративный подход</span></h3>
+            <span class="dur">50–60 минут</span>
+            <span class="price">от 5 000 ₽</span>
+            <p>Индивидуальные сессии. Работа с тревогой, самооценкой, отношениями, поиском себя.</p>
+          </article>
+          <article class="service">
+            <h3>Разбор по методу «Звезда»<span>Цифровая психология</span></h3>
+            <span class="dur">Глубинная сессия</span>
+            <span class="price">25 000 ₽</span>
+            <p>Глубинный анализ вашей личности через призму цифр. Помогает увидеть сильные стороны и зоны роста.</p>
+          </article>
+          <article class="service">
+            <h3>Ведение и сопровождение</h3>
+            <span class="dur">1 месяц</span>
+            <span class="price">30 000 ₽</span>
+            <p>Формат поддержки для тех, кому важна регулярность и глубина.</p>
+          </article>
+          <article class="service">
+            <h3>Трансформационная игра<span>Индивидуально или в группе</span></h3>
+            <span class="dur">3–4 часа</span>
+            <span class="price">3 500 ₽</span>
+            <p>За 3–4 часа игры вы можете прожить и проработать запрос, который в обычной беседе требовал бы долгого времени. Стоимость указана за индивидуальный формат.</p>
+          </article>
+          <article class="service">
+            <h3>Работа в фокус-группе</h3>
+            <span class="dur">Групповой формат</span>
+            <span class="price">2 500 ₽</span>
+            <p>Поддерживающая среда, где опыт других помогает лучше понять себя.</p>
+          </article>
+        </div>
+        <div class="intro">
+          <div>
+            <h3>Первичное знакомство — бесплатно</h3>
+            <p>15–20 минут, чтобы понять, комфортно ли нам будет работать вместе.</p>
+          </div>
+          <a class="btn" href="https://t.me/Dyakonova_Anastasya" target="_blank" rel="noopener">Записаться на знакомство</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="reviews">
+    <div class="wrap">
+      <p class="rail">Отзывы</p>
+      <div class="body">
+        <h2>Слова клиентов</h2>
+        <p class="note">Отзывы из личной переписки. Публикуются анонимно и с небольшими сокращениями.</p>
+        <div class="reviews">
+          <figure class="review">
+            <blockquote>
+              <p class="big">Трансформации пошли во время игры.</p>
+              <p>Благодарю за Ваш вклад в каждого. Вы обладаете огромными, колоссальными знаниями и ресурсами. Благодарю, что рассказали про каждого и выслушивали, в каждого вложились по полной.</p>
+              <p>И главный инсайт — все задания игры были на то состояние любви к себе, чтобы совершать и открывать новые горизонты. Передалась Ваша структурность и последовательность.</p>
+            </blockquote>
+            <figcaption>Участница трансформационной игры</figcaption>
+          </figure>
+          <figure class="review">
+            <blockquote>
+              <p class="big">Прям очень чётко про меня.</p>
+              <p>Да, сейчас есть такое состояние, действительно. Про мой психотип: эмпатия и интуиция — так и есть. Благодарю вас за разбор. Обалденно!</p>
+            </blockquote>
+            <figcaption>После разбора</figcaption>
+          </figure>
+          <figure class="review">
+            <blockquote>
+              <p class="big">Я лично не ожидала такого интересного подхода.</p>
+              <p>Благодарю за ваш подход, душевный и бережный к каждой, за ваши практики телесные, за различные инструменты в арсенале — это дорого стоит. Так умело их объединить и применять в запрос для каждой — одни рисунки чего стоят!</p>
+              <p>Он так откликнулся в моём сознании — как перевернул явное в нужную сторону, чтоб я теперь это всё разглядела и прочувствовала. Мне очень ценен этот опыт и ваши рекомендации!</p>
+            </blockquote>
+            <figcaption>Участница фокус-группы</figcaption>
+          </figure>
+          <figure class="review">
+            <blockquote>
+              <p class="big">Реально я в чём-то выросла.</p>
+              <p>Спасибо огромное. Да, всё, что сказала, мне очень близко.</p>
+            </blockquote>
+            <figcaption>Клиентка</figcaption>
+          </figure>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="contact">
+    <div class="wrap">
+      <p class="rail">Контакты</p>
+      <div class="body">
+        <h2>Напишите мне, и мы выберем время для знакомства</h2>
+        <p>Расскажите в двух словах, с чем хотите прийти. Я отвечу и предложу удобное время для бесплатной встречи.</p>
+        <dl class="contacts">
+          <div><dt>Telegram</dt><dd><a href="https://t.me/Dyakonova_Anastasya" target="_blank" rel="noopener">@Dyakonova_Anastasya</a></dd></div>
+          <div><dt>Телефон / WhatsApp</dt><dd>+7 985 812-96-40</dd></div>
+        </dl>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <span>© 2026 Анастасия Дьяконова, психолог-терапевт</span>
+  </div>
+</footer>
+
+<script>
+/* Поле созвездий в первом экране: дрейфующие точки, связанные тонкими линиями */
+(function () {
+  var canvas = document.getElementById('constellation');
+  if (!canvas || !canvas.getContext) return;
+  var ctx = canvas.getContext('2d'), hero = canvas.parentElement;
+  var w = 0, h = 0, nodes = [], LINK = 150, visible = true, frame = 0;
+  var pointer = { x: -9999, y: -9999 };
+  var colors = { line: '#8FA596', node: '#8FA596', accent: '#7A2335' };
+  var reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  function readColors() {
+    var cs = getComputedStyle(document.documentElement);
+    colors.line = cs.getPropertyValue('--sage').trim() || colors.line;
+    colors.node = cs.getPropertyValue('--sage-deep').trim() || colors.node;
+    colors.accent = cs.getPropertyValue('--wine').trim() || colors.accent;
+  }
+  function resize() {
+    var dpr = Math.min(window.devicePixelRatio || 1, 2);
+    w = hero.clientWidth; h = hero.clientHeight;
+    canvas.width = Math.max(1, Math.floor(w * dpr));
+    canvas.height = Math.max(1, Math.floor(h * dpr));
+    ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+    var count = Math.max(18, Math.min(80, Math.round(w * h / 14000)));
+    nodes = [];
+    for (var i = 0; i < count; i++) {
+      nodes.push({
+        x: Math.random() * w, y: Math.random() * h,
+        vx: (Math.random() - 0.5) * 0.3, vy: (Math.random() - 0.5) * 0.3,
+        r: Math.random() * 1.6 + 1.2, accent: i % 7 === 0, phase: Math.random() * 6.28
+      });
+    }
+  }
+  function draw(time) {
+    ctx.clearRect(0, 0, w, h);
+    ctx.lineWidth = 1; ctx.strokeStyle = colors.line;
+    for (var i = 0; i < nodes.length; i++) {
+      for (var j = i + 1; j < nodes.length; j++) {
+        var d = Math.hypot(nodes[i].x - nodes[j].x, nodes[i].y - nodes[j].y);
+        if (d < LINK) {
+          ctx.globalAlpha = 0.12 + (1 - d / LINK) * 0.4;
+          ctx.beginPath(); ctx.moveTo(nodes[i].x, nodes[i].y); ctx.lineTo(nodes[j].x, nodes[j].y); ctx.stroke();
+        }
+      }
+    }
+    nodes.forEach(function (n) {
+      if (!reduced) {
+        n.x += n.vx; n.y += n.vy;
+        if (n.x < 0 || n.x > w) n.vx *= -1;
+        if (n.y < 0 || n.y > h) n.vy *= -1;
+        if (Math.hypot(n.x - pointer.x, n.y - pointer.y) < 200) {
+          n.x -= (n.x - pointer.x) * 0.005; n.y -= (n.y - pointer.y) * 0.005;
+        }
+      }
+      var pulse = 0.75 + Math.sin(time * 0.001 + n.phase) * 0.25;
+      ctx.fillStyle = n.accent ? colors.accent : colors.node;
+      ctx.globalAlpha = pulse * 0.18;
+      ctx.beginPath(); ctx.arc(n.x, n.y, n.r * 2.6, 0, 6.2832); ctx.fill();
+      ctx.globalAlpha = pulse * 0.8;
+      ctx.beginPath(); ctx.arc(n.x, n.y, n.r, 0, 6.2832); ctx.fill();
+    });
+    ctx.globalAlpha = 1;
+  }
+  function loop(time) {
+    if (visible) { if (frame++ % 90 === 0) readColors(); draw(time); }
+    requestAnimationFrame(loop);
+  }
+  hero.addEventListener('pointermove', function (e) {
+    var b = hero.getBoundingClientRect(); pointer.x = e.clientX - b.left; pointer.y = e.clientY - b.top;
+  });
+  hero.addEventListener('pointerleave', function () { pointer.x = pointer.y = -9999; });
+  var timer; window.addEventListener('resize', function () {
+    clearTimeout(timer); timer = setTimeout(function () { resize(); if (reduced) draw(0); }, 150);
+  });
+  if ('IntersectionObserver' in window) {
+    new IntersectionObserver(function (en) { visible = en[0].isIntersecting; }).observe(hero);
+  }
+  readColors(); resize();
+  if (reduced) draw(0); else requestAnimationFrame(loop);
+})();
+</script>
+</body>
+</html>
