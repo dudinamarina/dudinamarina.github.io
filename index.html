@@ -140,6 +140,18 @@ h1 em { font-style: italic; color: var(--wine); }
 .star .pt.s { fill: var(--sage-deep); }
 @keyframes draw { from { stroke-dashoffset: 1150; } to { stroke-dashoffset: 0; } }
 
+/* Параллакс: слои первого экрана и круг в «Опыте» движутся с разной скоростью при прокрутке (--py задаёт скрипт) */
+.hero canvas { transform: translate3d(0, calc(var(--py, 0) * .32px), 0); }
+.hero-text { transform: translate3d(0, calc(var(--py, 0) * .12px), 0); }
+.portrait { transform: translate3d(0, calc(var(--py, 0) * -.07px), 0); }
+.portrait::before { transform: translate3d(0, calc(var(--py, 0) * .2px), 0); }
+.star { transform: translate3d(0, calc(var(--py, 0) * -.14px), 0); }
+.band::after { transform: translate3d(0, calc(var(--py, 0) * .22px), 0); }
+.hero canvas, .hero-text, .portrait, .portrait::before, .star, .band::after { will-change: transform; }
+@media (prefers-reduced-motion: reduce) {
+  .hero canvas, .hero-text, .portrait, .portrait::before, .star, .band::after { transform: none; }
+}
+
 /* Sections */
 .section { border-top: 1px solid var(--line); }
 .section .wrap {
@@ -302,7 +314,7 @@ footer .wrap { display: flex; flex-wrap: wrap; justify-content: space-between; g
   <section class="hero">
     <canvas id="constellation" aria-hidden="true"></canvas>
     <div class="wrap">
-      <div>
+      <div class="hero-text">
         <p class="eyebrow">Психолог-терапевт</p>
         <h1>Анастасия <em>Дьяконова</em></h1>
         <p class="lead">Интегративный подход, цифровая психология и трансформационные игры.</p>
@@ -591,6 +603,30 @@ footer .wrap { display: flex; flex-wrap: wrap; justify-content: space-between; g
   }
   readColors(); resize();
   if (reduced) draw(0); else requestAnimationFrame(loop);
+})();
+</script>
+
+<script>
+/* Параллакс при прокрутке */
+(function () {
+  if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+  var hero = document.querySelector('.hero'), band = document.querySelector('.band'), ticking = false;
+  function update() {
+    ticking = false;
+    var vh = window.innerHeight;
+    if (hero) {
+      var h = hero.getBoundingClientRect();
+      if (h.bottom > 0) hero.style.setProperty('--py', Math.max(0, -h.top).toFixed(1));
+    }
+    if (band) {
+      var b = band.getBoundingClientRect();
+      if (b.bottom > 0 && b.top < vh) band.style.setProperty('--py', (vh - b.top - (vh + b.height) / 2).toFixed(1));
+    }
+  }
+  function onScroll() { if (!ticking) { ticking = true; requestAnimationFrame(update); } }
+  window.addEventListener('scroll', onScroll, { passive: true });
+  window.addEventListener('resize', onScroll);
+  update();
 })();
 </script>
 </body>
