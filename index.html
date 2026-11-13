@@ -161,12 +161,12 @@ h2 { font-family: var(--display); font-weight: 400; font-size: clamp(1.8rem, 3.6
 
 .edu { display: grid; grid-template-columns: repeat(auto-fit, minmax(17rem, 1fr)); gap: 1.4rem; }
 .edu-card {
-  position: relative; padding: 2.2rem 2rem 2rem; border: 1px solid var(--sage); border-radius: 1.4rem;
-  background: linear-gradient(160deg, var(--blush-soft), transparent 55%);
+  position: relative; padding: 2.2rem 2rem 2rem; border-radius: 1.4rem; background: var(--surface);
+  box-shadow: 0 1px 0 var(--line), 0 18px 40px -28px color-mix(in srgb, var(--wine) 45%, transparent);
   transition: transform .3s, box-shadow .3s;
 }
 .edu-card::before { content: ""; position: absolute; inset: .45rem; border: 1px solid var(--line); border-radius: 1.05rem; pointer-events: none; }
-.edu-card:hover { transform: translateY(-4px); box-shadow: 0 24px 44px -30px color-mix(in srgb, var(--wine) 55%, transparent); }
+.edu-card:hover { transform: translateY(-4px); box-shadow: 0 1px 0 var(--line), 0 26px 46px -26px color-mix(in srgb, var(--wine) 60%, transparent); }
 .edu-head { display: flex; align-items: center; gap: 1rem; padding-bottom: 1.3rem; margin-bottom: .4rem; border-bottom: 1px solid var(--line); }
 .edu-icon { flex: none; display: grid; place-items: center; width: 3.6rem; height: 3.6rem; border-radius: 50%; background: var(--bg); border: 1px solid var(--blush); }
 .edu-icon svg { width: 1.9rem; height: 1.9rem; fill: none; stroke: var(--wine); stroke-width: 1.3; stroke-linecap: round; stroke-linejoin: round; }
