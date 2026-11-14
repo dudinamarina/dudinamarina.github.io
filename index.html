@@ -211,9 +211,10 @@ h2 { font-family: var(--display); font-weight: 400; font-size: clamp(1.8rem, 3.6
 .edu-icon { flex: none; display: grid; place-items: center; width: 3.6rem; height: 3.6rem; border-radius: 50%; background: transparent; border: 1px solid var(--blush); }
 .edu-icon svg { width: 1.9rem; height: 1.9rem; fill: none; stroke: var(--wine); stroke-width: 1.3; stroke-linecap: round; stroke-linejoin: round; }
 .edu-head h3 { font-family: var(--display); font-weight: 500; font-size: 1.45rem; line-height: 1.2; }
-.edu-list li { display: grid; grid-template-columns: 1rem minmax(0, 1fr); gap: .8rem; padding-block: .95rem; }
+.edu { counter-reset: edu; }
+.edu-list li { counter-increment: edu; display: grid; grid-template-columns: 2rem minmax(0, 1fr); gap: .9rem; align-items: baseline; padding-block: .95rem; }
+.edu-list li::before { content: counter(edu, decimal-leading-zero); font-family: var(--display); font-size: 1.25rem; font-variant-numeric: lining-nums; color: var(--wine); line-height: 1.2; }
 .edu-list li + li { border-top: 1px dashed var(--line); }
-.edu-list li svg { width: .8rem; height: .8rem; margin-top: .45rem; fill: var(--sage); }
 .edu-list strong { font-weight: 600; }
 .edu-list small { display: block; font-size: .88rem; color: var(--muted); margin-top: .15rem; }
 
@@ -453,8 +454,8 @@ footer .wrap { align-items: center;  display: flex; flex-wrap: wrap; justify-con
               <h3>Образование</h3>
             </div>
             <ul class="edu-list">
-              <li><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M10 0l2.4 7.6H20l-6.2 4.6 2.4 7.8L10 15.2 3.8 20l2.4-7.8L0 7.6h7.6z"/></svg><span><strong>Дипломированный психолог-консультант</strong><small>Специалист по цифровой психологии</small></span></li>
-              <li><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M10 0l2.4 7.6H20l-6.2 4.6 2.4 7.8L10 15.2 3.8 20l2.4-7.8L0 7.6h7.6z"/></svg><span><strong>Магистрант психологических наук</strong><small>Обучение продолжается</small></span></li>
+              <li><span><strong>Дипломированный психолог-консультант</strong><small>Специалист по цифровой психологии</small></span></li>
+              <li><span><strong>Магистрант психологических наук</strong><small>Обучение продолжается</small></span></li>
             </ul>
           </article>
           <article class="edu-card">
@@ -463,8 +464,8 @@ footer .wrap { align-items: center;  display: flex; flex-wrap: wrap; justify-con
               <h3>Сертификаты и&nbsp;развитие</h3>
             </div>
             <ul class="edu-list">
-              <li><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M10 0l2.4 7.6H20l-6.2 4.6 2.4 7.8L10 15.2 3.8 20l2.4-7.8L0 7.6h7.6z"/></svg><span><strong>Сертифицированный игропрактик</strong><small>Ведущая трансформационных игр</small></span></li>
-              <li><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M10 0l2.4 7.6H20l-6.2 4.6 2.4 7.8L10 15.2 3.8 20l2.4-7.8L0 7.6h7.6z"/></svg><span><strong>Регулярное повышение квалификации</strong><small>КПТ, позитивная психология и коучинг</small></span></li>
+              <li><span><strong>Сертифицированный игропрактик</strong><small>Ведущая трансформационных игр</small></span></li>
+              <li><span><strong>Регулярное повышение квалификации</strong><small>КПТ, позитивная психология и коучинг</small></span></li>
             </ul>
           </article>
         </div>
