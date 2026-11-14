@@ -236,13 +236,6 @@ h2 { font-family: var(--display); font-weight: 400; font-size: clamp(1.8rem, 3.6
   transition: transform .3s, box-shadow .3s;
 }
 .service:nth-child(-n+2) { grid-column: span 3; }
-/* Колода МАК на фоне карточки трансформационной игры: полупрозрачная, под текстом */
-.service.game { position: relative; overflow: hidden; isolation: isolate; }
-.service.game::before {
-  content: ""; position: absolute; inset: 0; z-index: -1; pointer-events: none;
-  background: url("mak-cards.jpg") center 60% / 135% auto no-repeat;
-  opacity: .16; mix-blend-mode: multiply;
-}
 .service:hover { transform: translateY(-4px); box-shadow: 0 1px 0 var(--line), 0 26px 46px -26px color-mix(in srgb, var(--wine) 60%, transparent); }
 .service h3 { order: 1; font: 600 .98rem/1.35 var(--body); letter-spacing: .14em; text-transform: uppercase; text-wrap: balance; }
 .service h3 span { display: block; font: 400 .82rem/1.4 var(--body); letter-spacing: .02em; text-transform: none; color: var(--sage-deep); margin-top: .35rem; }
@@ -320,7 +313,6 @@ footer .wrap { display: flex; flex-wrap: wrap; justify-content: space-between; g
   .rail { padding-top: 0; }
   .services { grid-template-columns: minmax(0, 1fr); }
   .service, .service:nth-child(-n+2) { grid-column: auto; }
-  .service.game::before { background-size: auto 125%; background-position: center 40%; }
   .intro { grid-template-columns: minmax(0, 1fr); }
   .btn { white-space: normal; text-align: center; }
 }
@@ -482,7 +474,7 @@ footer .wrap { display: flex; flex-wrap: wrap; justify-content: space-between; g
             <span class="price">30 000 ₽</span>
             <p>Формат поддержки для тех, кому важна регулярность и глубина.</p>
           </article>
-          <article class="service game">
+          <article class="service">
             <h3>Трансформационная игра<span>Индивидуально или в группе</span></h3>
             <span class="dur">3–4 часа</span>
             <span class="price">3 500 ₽</span>
