@@ -242,7 +242,27 @@ h2 { font-family: var(--display); font-weight: 400; font-size: clamp(1.8rem, 3.6
   background: var(--surface); border: 1px solid transparent;
   font-family: var(--display); font-size: 1.25rem; line-height: 1.3;
 }
-.asks svg { width: 1.1rem; height: 1.1rem; fill: var(--band-accent); }
+/* Знаки запросов: компас (ориентиры), круги (границы), слои (глубина) — оживают при наведении */
+.asks li { transition: transform .3s, box-shadow .3s; }
+.asks li:hover { transform: translateY(-4px); box-shadow: 0 22px 40px -28px color-mix(in srgb, var(--wine) 55%, transparent); }
+.asks .ic { width: 3rem; height: 3rem; fill: none; stroke: var(--band-accent); stroke-width: 1.4; stroke-linecap: round; stroke-linejoin: round; overflow: visible; }
+.asks .ic .thin { stroke: var(--sage); }
+.asks .ic .fill { fill: var(--band-accent); stroke: none; }
+.asks .ic .needle { transform-origin: 24px 24px; transform: rotate(28deg); transition: transform .9s cubic-bezier(.3, 1.6, .5, 1); }
+.asks li:hover .needle { transform: rotate(-12deg); }
+.asks .ic .outer { stroke: var(--sage); transform-origin: 24px 24px; animation: spin 24s linear infinite; }
+.asks .ic .mid { transform-origin: 24px 24px; transition: transform .5s; }
+.asks li:hover .mid { transform: scale(1.18); }
+.asks .ic .l2 { stroke: var(--sage); }
+.asks .ic .l1, .asks .ic .l2, .asks .ic .l3, .asks .ic-depth .fill { transition: transform .6s; }
+.asks li:hover .l1 { transform: translateX(3px); }
+.asks li:hover .l2 { transform: translateX(-3px); }
+.asks li:hover .l3 { transform: translateX(3px); }
+.asks li:hover .ic-depth .fill { transform: translateY(3px); }
+@media (prefers-reduced-motion: reduce) {
+  .asks li, .asks .ic * { transition: none; animation: none; }
+  .asks li:hover { transform: none; }
+}
 .exp-close { display: grid; grid-template-columns: 2.5rem minmax(0, 1fr); gap: 1rem; align-items: baseline; padding-top: 1.6rem; border-top: 1px solid var(--band-line); font-size: 1.1rem; max-width: 44rem; }
 .exp-close::before { content: ""; height: 1px; background: var(--band-accent); transform: translateY(-.35rem); }
 
@@ -488,9 +508,9 @@ footer .wrap { align-items: center;  display: flex; flex-wrap: wrap; justify-con
         </ul>
         <p class="asks-title">С какими запросами работаю</p>
         <ul class="asks">
-          <li><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M10 0l2.4 7.6H20l-6.2 4.6 2.4 7.8L10 15.2 3.8 20l2.4-7.8L0 7.6h7.6z"/></svg>Поиск смысла и жизненных ориентиров</li>
-          <li><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M10 0l2.4 7.6H20l-6.2 4.6 2.4 7.8L10 15.2 3.8 20l2.4-7.8L0 7.6h7.6z"/></svg>Выстраивание границ</li>
-          <li><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M10 0l2.4 7.6H20l-6.2 4.6 2.4 7.8L10 15.2 3.8 20l2.4-7.8L0 7.6h7.6z"/></svg>Проработка глубинных сценариев</li>
+          <li><svg class="ic ic-compass" viewBox="0 0 48 48" aria-hidden="true"><circle cx="24" cy="24" r="19"/><path d="M24 2v5M24 41v5M2 24h5M41 24h5" class="thin"/><g class="needle"><path d="M24 11l5 13-5 13-5-13z"/><path d="M19 24h10" class="thin"/><path class="fill" d="M24 11l5 13H19z"/></g></svg>Поиск смысла и жизненных ориентиров</li>
+          <li><svg class="ic ic-bound" viewBox="0 0 48 48" aria-hidden="true"><circle class="outer" cx="24" cy="24" r="20" stroke-dasharray="3 5"/><circle class="mid" cx="24" cy="24" r="13"/><circle class="fill" cx="24" cy="24" r="5"/></svg>Выстраивание границ</li>
+          <li><svg class="ic ic-depth" viewBox="0 0 48 48" aria-hidden="true"><path class="l1" d="M4 12c7-5 13 5 20 0s13-5 20 0"/><path class="l2" d="M4 22c7-5 13 5 20 0s13-5 20 0" /><path class="l3" d="M4 32c7-5 13 5 20 0s13-5 20 0"/><circle class="fill" cx="24" cy="41" r="3"/></svg>Проработка глубинных сценариев</li>
         </ul>
         <p class="exp-close">Я работаю бережно и структурно, помогая клиенту не просто «понять» проблему, а прожить трансформацию.</p>
       </div>
