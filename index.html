@@ -237,6 +237,8 @@ h2 { font-family: var(--display); font-weight: 400; font-size: clamp(1.8rem, 3.6
 @media (prefers-reduced-motion: no-preference) {
   .edu-item { animation: eduFadeIn .8s ease both; }
   .edu-item:nth-child(2) { animation-delay: .2s; }
+  .edu-item:nth-child(3) { animation-delay: .4s; }
+  .edu-item:nth-child(4) { animation-delay: .6s; }
   @keyframes eduFadeIn { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
 }
 
@@ -483,7 +485,7 @@ footer .wrap { align-items: center;  display: flex; flex-wrap: wrap; justify-con
     <div class="edu-container">
 
       <div class="edu-heading">
-        <span class="edu-eyebrow">MY PROFESSIONAL JOURNEY</span>
+        <span class="edu-eyebrow">МОЙ ПРОФЕССИОНАЛЬНЫЙ ПУТЬ</span>
         <h2>Образование и<br>профессиональное развитие</h2>
         <p>Мой профессиональный путь основан на психологическом образовании, постоянном обучении и стремлении глубже понимать особенности человеческой личности.</p>
       </div>
@@ -492,7 +494,7 @@ footer .wrap { align-items: center;  display: flex; flex-wrap: wrap; justify-con
         <article class="edu-item">
           <div class="edu-marker"><span>01</span></div>
           <div class="edu-content">
-            <span class="edu-category">FOUNDATION</span>
+            <span class="edu-category">ОСНОВА</span>
             <h3>Базовое образование</h3>
             <h4>Психолог-консультант</h4>
             <p>Дипломированная подготовка в области психологического консультирования. Фундамент знаний и практических инструментов для индивидуальной работы с клиентами.</p>
@@ -503,11 +505,33 @@ footer .wrap { align-items: center;  display: flex; flex-wrap: wrap; justify-con
         <article class="edu-item">
           <div class="edu-marker"><span>02</span></div>
           <div class="edu-content">
-            <span class="edu-category">CONTINUOUS LEARNING</span>
+            <span class="edu-category">НЕПРЕРЫВНОЕ ОБУЧЕНИЕ</span>
             <h3>Продолжение образования</h3>
             <h4>Магистратура по психологии</h4>
             <p>В настоящее время продолжаю обучение в магистратуре, углубляя знания в области психологической науки и современных подходов к работе с личностью.</p>
             <span class="edu-status edu-current">Обучение продолжается</span>
+          </div>
+        </article>
+
+        <article class="edu-item">
+          <div class="edu-marker"><span>03</span></div>
+          <div class="edu-content">
+            <span class="edu-category">СЕРТИФИКАЦИЯ</span>
+            <h3>Трансформационные игры</h3>
+            <h4>Сертифицированный игропрактик</h4>
+            <p>Ведущая трансформационных игр. Провожу игры в индивидуальном и групповом формате.</p>
+            <span class="edu-status">Сертификат получен</span>
+          </div>
+        </article>
+
+        <article class="edu-item">
+          <div class="edu-marker"><span>04</span></div>
+          <div class="edu-content">
+            <span class="edu-category">РАЗВИТИЕ</span>
+            <h3>Повышение квалификации</h3>
+            <h4>КПТ, позитивная психология и коучинг</h4>
+            <p>Регулярно повышаю квалификацию в области когнитивно-поведенческой терапии, позитивной психологии и коучинга.</p>
+            <span class="edu-status edu-current">Регулярно</span>
           </div>
         </article>
       </div>
