@@ -237,9 +237,8 @@ h2 { font-family: var(--display); font-weight: 400; font-size: clamp(1.8rem, 3.6
 .formats li { font-size: .74rem; letter-spacing: .14em; text-transform: uppercase; padding: .5rem 1rem; color: var(--sage-deep); border: 1px solid var(--sage); border-radius: 999px; }
 .asks-title { font-size: .78rem; letter-spacing: .18em; text-transform: uppercase; color: var(--sage-deep); margin-top: 1rem; }
 .asks { display: grid; max-width: 36rem; }
-.asks li + li { border-top: 1px solid var(--band-line); }
 .asks li {
-  display: grid; grid-template-columns: 3rem minmax(0, 1fr); gap: 1.3rem; align-items: center; padding-block: 1.1rem;
+  display: grid; grid-template-columns: 3rem minmax(0, 1fr); gap: 1.3rem; align-items: center; padding-block: .7rem;
   font-family: var(--display); font-size: 1.25rem; line-height: 1.3;
 }
 /* Знаки запросов: компас (ориентиры), круги (границы), слои (глубина) — оживают при наведении */
@@ -260,8 +259,7 @@ h2 { font-family: var(--display); font-weight: 400; font-size: clamp(1.8rem, 3.6
 @media (prefers-reduced-motion: reduce) {
   .asks .ic * { transition: none; animation: none; }
 }
-.exp-close { display: grid; grid-template-columns: 2.5rem minmax(0, 1fr); gap: 1rem; align-items: baseline; padding-top: 1.6rem; border-top: 1px solid var(--band-line); font-size: 1.1rem; max-width: 44rem; }
-.exp-close::before { content: ""; height: 1px; background: var(--band-accent); transform: translateY(-.35rem); }
+.exp-close { padding-top: 1.6rem; border-top: 1px solid var(--band-line); font-size: 1.1rem; max-width: 44rem; }
 
 /* Services */
 .tinted { background: var(--surface); }
