@@ -275,17 +275,37 @@ h2 { font-family: var(--display); font-weight: 400; font-size: clamp(1.8rem, 3.6
 .intro h3 { font-family: var(--display); font-weight: 400; font-size: clamp(1.4rem, 2.6vw, 1.85rem); line-height: 1.2; }
 .intro p { color: var(--muted); margin-top: .5rem; }
 
-/* Reviews */
-.reviews { columns: 2 19rem; column-gap: 1.2rem; }
-.review {
-  break-inside: avoid; margin: 0 0 1.2rem; padding: 1.9rem 1.8rem 1.6rem;
-  background: var(--surface); border-radius: 1.4rem; position: relative;
+/* Reviews: карусель телефонов со скриншотами переписки */
+.phones { position: relative; display: grid; gap: 1.6rem; justify-items: center; }
+.phones-stage { position: relative; width: 100%; height: calc(var(--pw) * 2.02); overflow: hidden; --pw: min(72vw, 19.5rem); touch-action: pan-y; }
+.phone {
+  position: absolute; left: 50%; top: 0; width: var(--pw); height: 100%; margin-left: calc(var(--pw) / -2);
+  padding: .55rem; border: 0; border-radius: 2.7rem; background: var(--ink); cursor: pointer;
+  box-shadow: inset 0 0 0 1.5px color-mix(in srgb, var(--blush) 55%, transparent), 0 30px 50px -30px color-mix(in srgb, var(--wine) 60%, transparent);
+  transition: transform .55s cubic-bezier(.3, .7, .2, 1), opacity .45s; transform: scale(.6); opacity: 0; pointer-events: none;
 }
-.review:nth-child(odd) { background: var(--blush-soft); }
-.review::before { content: "“"; display: block; font: 400 3.6rem/.6 var(--display); color: var(--wine); height: 1.5rem; }
-.review blockquote { display: grid; gap: .8rem; font-size: 1rem; line-height: 1.6; }
-.review blockquote .big { font-family: var(--display); font-size: 1.3rem; line-height: 1.35; }
-.review figcaption { margin-top: 1.2rem; font-size: .74rem; letter-spacing: .14em; text-transform: uppercase; color: var(--sage-deep); }
+.phone::before { content: ""; position: absolute; top: 1.15rem; left: 50%; width: 28%; height: 1.15rem; margin-left: -14%; border-radius: 1rem; background: var(--ink); z-index: 1; }
+.phone .screen { display: grid; align-items: center; width: 100%; height: 100%; border-radius: 2.2rem; overflow: hidden; background: #17121b; padding-top: 2.6rem; padding-bottom: 1rem; }
+.phone img { display: block; width: 100%; height: 100%; object-fit: contain; }
+.phone[data-pos="0"] { transform: none; opacity: 1; pointer-events: auto; z-index: 3; cursor: zoom-in; }
+.phone[data-pos="-1"] { transform: translateX(-86%) scale(.8); opacity: .5; pointer-events: auto; z-index: 2; }
+.phone[data-pos="1"] { transform: translateX(86%) scale(.8); opacity: .5; pointer-events: auto; z-index: 2; }
+.phone[data-pos="-2"] { transform: translateX(-150%) scale(.64); opacity: .18; z-index: 1; }
+.phone[data-pos="2"] { transform: translateX(150%) scale(.64); opacity: .18; z-index: 1; }
+.phones-nav { display: flex; align-items: center; gap: 1.2rem; }
+.phones-btn {
+  display: grid; place-items: center; width: 3rem; height: 3rem; padding: 0; border: 1px solid transparent; border-radius: 50%; cursor: pointer;
+  background: linear-gradient(var(--bg), var(--bg)) padding-box, linear-gradient(135deg, var(--wine), transparent 85%) border-box;
+  color: var(--wine); transition: background .25s, color .25s;
+}
+.phones-btn:hover { background: linear-gradient(var(--btn-bg), var(--btn-bg)) padding-box, linear-gradient(135deg, var(--blush), transparent 70%) border-box; color: var(--btn-fg); }
+.phones-btn svg { width: 1.2rem; height: 1.2rem; fill: none; stroke: currentColor; stroke-width: 1.6; stroke-linecap: round; stroke-linejoin: round; }
+.phones-count { min-width: 4.5rem; text-align: center; font-family: var(--display); font-size: 1.15rem; font-variant-numeric: lining-nums tabular-nums; }
+.phones-count span { color: var(--muted); }
+.lightbox { padding: 0; border: 0; background: transparent; max-width: min(94vw, 820px); max-height: 92vh; }
+.lightbox::backdrop { background: rgba(40, 32, 34, .86); }
+.lightbox img { display: block; max-width: 100%; max-height: 92vh; width: auto; height: auto; border-radius: 1rem; cursor: zoom-out; }
+@media (prefers-reduced-motion: reduce) { .phone, .phones-btn { transition: none; } }
 
 /* Contact */
 .contacts { display: grid; grid-template-columns: repeat(auto-fit, minmax(13rem, 1fr)); gap: 1.5rem 2.5rem; max-width: 46rem; }
@@ -522,38 +542,28 @@ footer .wrap { display: flex; flex-wrap: wrap; justify-content: space-between; g
       <p class="rail">Отзывы</p>
       <div class="body">
         <h2>Слова клиентов</h2>
-        <p class="note">Отзывы из личной переписки. Публикуются анонимно и с небольшими сокращениями.</p>
-        <div class="reviews">
-          <figure class="review">
-            <blockquote>
-              <p class="big">Трансформации пошли во время игры.</p>
-              <p>Благодарю за Ваш вклад в каждого. Вы обладаете огромными, колоссальными знаниями и ресурсами. Благодарю, что рассказали про каждого и выслушивали, в каждого вложились по полной.</p>
-              <p>И главный инсайт — все задания игры были на то состояние любви к себе, чтобы совершать и открывать новые горизонты. Передалась Ваша структурность и последовательность.</p>
-            </blockquote>
-            <figcaption>Участница трансформационной игры</figcaption>
-          </figure>
-          <figure class="review">
-            <blockquote>
-              <p class="big">Прям очень чётко про меня.</p>
-              <p>Да, сейчас есть такое состояние, действительно. Про мой психотип: эмпатия и интуиция — так и есть. Благодарю вас за разбор. Обалденно!</p>
-            </blockquote>
-            <figcaption>После разбора</figcaption>
-          </figure>
-          <figure class="review">
-            <blockquote>
-              <p class="big">Я лично не ожидала такого интересного подхода.</p>
-              <p>Благодарю за ваш подход, душевный и бережный к каждой, за ваши практики телесные, за различные инструменты в арсенале — это дорого стоит. Так умело их объединить и применять в запрос для каждой — одни рисунки чего стоят!</p>
-              <p>Он так откликнулся в моём сознании — как перевернул явное в нужную сторону, чтоб я теперь это всё разглядела и прочувствовала. Мне очень ценен этот опыт и ваши рекомендации!</p>
-            </blockquote>
-            <figcaption>Участница фокус-группы</figcaption>
-          </figure>
-          <figure class="review">
-            <blockquote>
-              <p class="big">Реально я в чём-то выросла.</p>
-              <p>Спасибо огромное. Да, всё, что сказала, мне очень близко.</p>
-            </blockquote>
-            <figcaption>Клиентка</figcaption>
-          </figure>
+        <p class="note">Скриншоты из личной переписки, публикуются без имён. Листайте стрелками или свайпом, нажмите на телефон, чтобы открыть отзыв крупнее.</p>
+        <div class="phones" id="phones">
+          <div class="phones-stage" aria-roledescription="карусель" aria-label="Отзывы клиентов">
+            <button class="phone" type="button" aria-label="Отзыв 1 из 13"><span class="screen"><img src="reviews/r01.jpg" alt="Скриншот отзыва клиентки из переписки, 1 из 13" loading="lazy"></span></button>
+            <button class="phone" type="button" aria-label="Отзыв 2 из 13"><span class="screen"><img src="reviews/r02.jpg" alt="Скриншот отзыва клиентки из переписки, 2 из 13" loading="lazy"></span></button>
+            <button class="phone" type="button" aria-label="Отзыв 3 из 13"><span class="screen"><img src="reviews/r03.jpg" alt="Скриншот отзыва клиентки из переписки, 3 из 13" loading="lazy"></span></button>
+            <button class="phone" type="button" aria-label="Отзыв 4 из 13"><span class="screen"><img src="reviews/r04.jpg" alt="Скриншот отзыва клиентки из переписки, 4 из 13" loading="lazy"></span></button>
+            <button class="phone" type="button" aria-label="Отзыв 5 из 13"><span class="screen"><img src="reviews/r05.jpg" alt="Скриншот отзыва клиентки из переписки, 5 из 13" loading="lazy"></span></button>
+            <button class="phone" type="button" aria-label="Отзыв 6 из 13"><span class="screen"><img src="reviews/r06.jpg" alt="Скриншот отзыва клиентки из переписки, 6 из 13" loading="lazy"></span></button>
+            <button class="phone" type="button" aria-label="Отзыв 7 из 13"><span class="screen"><img src="reviews/r07.jpg" alt="Скриншот отзыва клиентки из переписки, 7 из 13" loading="lazy"></span></button>
+            <button class="phone" type="button" aria-label="Отзыв 8 из 13"><span class="screen"><img src="reviews/r08.jpg" alt="Скриншот отзыва клиентки из переписки, 8 из 13" loading="lazy"></span></button>
+            <button class="phone" type="button" aria-label="Отзыв 9 из 13"><span class="screen"><img src="reviews/r09.jpg" alt="Скриншот отзыва клиентки из переписки, 9 из 13" loading="lazy"></span></button>
+            <button class="phone" type="button" aria-label="Отзыв 10 из 13"><span class="screen"><img src="reviews/r10.jpg" alt="Скриншот отзыва клиентки из переписки, 10 из 13" loading="lazy"></span></button>
+            <button class="phone" type="button" aria-label="Отзыв 11 из 13"><span class="screen"><img src="reviews/r11.jpg" alt="Скриншот отзыва клиентки из переписки, 11 из 13" loading="lazy"></span></button>
+            <button class="phone" type="button" aria-label="Отзыв 12 из 13"><span class="screen"><img src="reviews/r12.jpg" alt="Скриншот отзыва клиентки из переписки, 12 из 13" loading="lazy"></span></button>
+            <button class="phone" type="button" aria-label="Отзыв 13 из 13"><span class="screen"><img src="reviews/r13.jpg" alt="Скриншот отзыва клиентки из переписки, 13 из 13" loading="lazy"></span></button>
+          </div>
+          <div class="phones-nav">
+            <button class="phones-btn" type="button" id="phones-prev" aria-label="Предыдущий отзыв"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20 12H4M10 6l-6 6 6 6"/></svg></button>
+            <p class="phones-count" aria-live="polite"><b id="phones-cur">1</b> <span>/ 13</span></p>
+            <button class="phones-btn" type="button" id="phones-next" aria-label="Следующий отзыв"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 12h16M14 6l6 6-6 6"/></svg></button>
+          </div>
         </div>
       </div>
     </div>
@@ -713,6 +723,47 @@ footer .wrap { display: flex; flex-wrap: wrap; justify-content: space-between; g
   window.addEventListener('scroll', check, { passive: true });
   b.addEventListener('click', function () { window.scrollTo({ top: 0, behavior: reduced ? 'auto' : 'smooth' }); });
   check();
+})();
+</script>
+
+<dialog class="lightbox" id="review-view" aria-label="Отзыв крупным планом"><img src="reviews/r01.jpg" alt=""></dialog>
+<script>
+/* Карусель отзывов */
+(function () {
+  var root = document.getElementById('phones'); if (!root) return;
+  var stage = root.querySelector('.phones-stage'), items = [].slice.call(root.querySelectorAll('.phone'));
+  var cur = 0, n = items.length, label = document.getElementById('phones-cur'), view = document.getElementById('review-view');
+  function render() {
+    items.forEach(function (el, i) {
+      var d = i - cur; if (d > n / 2) d -= n; if (d < -n / 2) d += n;
+      el.dataset.pos = Math.abs(d) <= 2 ? d : (d < 0 ? -3 : 3);
+      el.tabIndex = d === 0 ? 0 : -1;
+    });
+    if (label) label.textContent = cur + 1;
+  }
+  function go(step) { cur = (cur + step + n) % n; render(); }
+  document.getElementById('phones-prev').addEventListener('click', function () { go(-1); });
+  document.getElementById('phones-next').addEventListener('click', function () { go(1); });
+  var moved = false;
+  items.forEach(function (el, i) {
+    el.addEventListener('click', function () {
+      if (moved) return;
+      if (i !== cur) { cur = i; render(); return; }
+      if (view && view.showModal) { var im = view.querySelector('img'), src = el.querySelector('img'); im.src = src.src; im.alt = src.alt; view.showModal(); }
+    });
+  });
+  if (view) view.addEventListener('click', function () { view.close(); });
+  root.addEventListener('keydown', function (e) {
+    if (e.key === 'ArrowLeft') { go(-1); } else if (e.key === 'ArrowRight') { go(1); }
+  });
+  var x0 = null;
+  stage.addEventListener('pointerdown', function (e) { x0 = e.clientX; moved = false; });
+  stage.addEventListener('pointerup', function (e) {
+    if (x0 === null) return; var dx = e.clientX - x0; x0 = null;
+    if (Math.abs(dx) > 40) { moved = true; go(dx < 0 ? 1 : -1); setTimeout(function () { moved = false; }, 50); }
+  });
+  stage.addEventListener('pointercancel', function () { x0 = null; });
+  render();
 })();
 </script>
 </body>
