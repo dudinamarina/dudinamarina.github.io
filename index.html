@@ -236,15 +236,13 @@ h2 { font-family: var(--display); font-weight: 400; font-size: clamp(1.8rem, 3.6
 .formats { display: flex; flex-wrap: wrap; gap: .5rem; margin-top: .2rem; }
 .formats li { font-size: .74rem; letter-spacing: .14em; text-transform: uppercase; padding: .5rem 1rem; color: var(--sage-deep); border: 1px solid var(--sage); border-radius: 999px; }
 .asks-title { font-size: .78rem; letter-spacing: .18em; text-transform: uppercase; color: var(--sage-deep); margin-top: 1rem; }
-.asks { display: grid; grid-template-columns: repeat(auto-fit, minmax(13rem, 1fr)); gap: 1rem; }
+.asks { display: grid; max-width: 36rem; }
+.asks li + li { border-top: 1px solid var(--band-line); }
 .asks li {
-  display: grid; gap: .9rem; align-content: start; padding: 1.5rem 1.4rem 1.6rem; border-radius: 1.2rem;
-  background: var(--surface); border: 1px solid transparent;
+  display: grid; grid-template-columns: 3rem minmax(0, 1fr); gap: 1.3rem; align-items: center; padding-block: 1.1rem;
   font-family: var(--display); font-size: 1.25rem; line-height: 1.3;
 }
 /* Знаки запросов: компас (ориентиры), круги (границы), слои (глубина) — оживают при наведении */
-.asks li { transition: transform .3s, box-shadow .3s; }
-.asks li:hover { transform: translateY(-4px); box-shadow: 0 22px 40px -28px color-mix(in srgb, var(--wine) 55%, transparent); }
 .asks .ic { width: 3rem; height: 3rem; fill: none; stroke: var(--band-accent); stroke-width: 1.4; stroke-linecap: round; stroke-linejoin: round; overflow: visible; }
 .asks .ic .thin { stroke: var(--sage); }
 .asks .ic .fill { fill: var(--band-accent); stroke: none; }
@@ -260,8 +258,7 @@ h2 { font-family: var(--display); font-weight: 400; font-size: clamp(1.8rem, 3.6
 .asks li:hover .l3 { transform: translateX(3px); }
 .asks li:hover .ic-depth .fill { transform: translateY(3px); }
 @media (prefers-reduced-motion: reduce) {
-  .asks li, .asks .ic * { transition: none; animation: none; }
-  .asks li:hover { transform: none; }
+  .asks .ic * { transition: none; animation: none; }
 }
 .exp-close { display: grid; grid-template-columns: 2.5rem minmax(0, 1fr); gap: 1rem; align-items: baseline; padding-top: 1.6rem; border-top: 1px solid var(--band-line); font-size: 1.1rem; max-width: 44rem; }
 .exp-close::before { content: ""; height: 1px; background: var(--band-accent); transform: translateY(-.35rem); }
