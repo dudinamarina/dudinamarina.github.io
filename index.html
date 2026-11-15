@@ -449,6 +449,22 @@ h2 { font-family: var(--display); font-weight: 400; font-size: clamp(1.8rem, 3.6
 .lightbox img { display: block; max-width: 100%; max-height: 92vh; width: auto; height: auto; border-radius: 1rem; cursor: zoom-out; }
 @media (prefers-reduced-motion: reduce) { .phone, .phones-btn { transition: none; } }
 
+/* Фото на фоне контактов: прозрачность 60 %, слева растворяется в фоне, чтобы текст оставался читаемым */
+.contact-sec { position: relative; overflow: hidden; }
+.contact-sec .wrap { position: relative; z-index: 1; }
+@media (min-width: 861px) { .contact-sec .wrap { min-height: 34rem; align-content: center; } .contact-sec .body { max-width: 27rem; } .contact-sec .contacts { grid-template-columns: minmax(0, 1fr); } }
+.contact-photo {
+  position: absolute; inset: 0 0 0 55%; opacity: .6;
+  background: url("contact.jpg") center 22% / cover no-repeat;
+  -webkit-mask-image: linear-gradient(to right, transparent, #000 42%); mask-image: linear-gradient(to right, transparent, #000 42%);
+}
+@media (max-width: 860px) {
+  .contact-photo {
+    position: relative; inset: auto; height: 24rem; margin-bottom: -3rem; background-position: center 18%;
+    -webkit-mask-image: linear-gradient(to bottom, #000 62%, transparent); mask-image: linear-gradient(to bottom, #000 62%, transparent);
+  }
+}
+
 /* Contact */
 .contacts { display: grid; grid-template-columns: repeat(auto-fit, minmax(13rem, 1fr)); gap: 1.5rem 2.5rem; max-width: 46rem; }
 .contacts dt { font-size: .78rem; letter-spacing: .14em; text-transform: uppercase; color: var(--muted); }
@@ -909,7 +925,8 @@ footer .wrap { align-items: center;  display: flex; flex-wrap: wrap; justify-con
     </div>
   </section>
 
-  <section class="section" id="contact">
+  <section class="section contact-sec" id="contact">
+    <div class="contact-photo" role="img" aria-label="Анастасия Дьяконова с колодой метафорических карт"></div>
     <div class="wrap">
       <p class="rail">Контакты</p>
       <div class="body">
