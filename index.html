@@ -361,7 +361,21 @@ h2 { font-family: var(--display); font-weight: 400; font-size: clamp(1.8rem, 3.6
 .hx-panel h4 { font-family: var(--display); font-weight: 400; font-size: 28px; line-height: 1.2; margin: 0 0 6px; text-wrap: balance; }
 .hx-panel p { font-size: 15px; line-height: 1.7; color: var(--ink); margin: 0; max-width: none; }
 .hx-panel p + p { margin-top: .6em; }
-@media (min-width: 1024px) and (max-width: 1199px) { .hx { --hx-rail: 56px; --hx-h: 660px; } .hx-panel-in { padding: 24px 26px 26px; } }
+/* Только десктоп: компактная панель, чтобы блок целиком помещался на экране */
+@media (min-width: 1024px) {
+  .hx { --hx-h: 500px; }
+  .hx-panel-in { padding: 22px 28px 24px; gap: 16px; }
+  .hx-top { gap: 16px; align-items: center; }
+  .hx-big { font-size: 44px; }
+  .hx-panel h4 { font-size: 24px; margin-bottom: 4px; }
+  .hx-subs:not(.hx-one) { display: block; columns: 2; column-gap: 30px; }
+  .hx-subs:not(.hx-one) .hx-subitem { break-inside: avoid; margin-bottom: 14px; }
+  .hx-subs:not(.hx-one) .hx-subitem:last-child { margin-bottom: 0; }
+  .hx-subitem h5 { font-size: 16px; margin-bottom: 4px; }
+  .hx-subs .hx-subitem p { font-size: 13px; line-height: 1.55; }
+  .hx-subs.hx-one .hx-subitem p { font-size: 15px; line-height: 1.75; }
+}
+@media (min-width: 1024px) and (max-width: 1199px) { .hx { --hx-rail: 56px; --hx-h: 540px; } .hx-panel-in { padding: 20px 24px 22px; } }
 @media (max-width: 1023px) {
   .hx ul { display: block; height: auto; border-right: 0; border-top: 1px solid var(--line); }
   .hx li, .hx li.on { border-left: 0; border-bottom: 1px solid var(--line); overflow: visible; }
@@ -826,7 +840,7 @@ footer .wrap { align-items: center;  display: flex; flex-wrap: wrap; justify-con
               </button>
               <div class="hx-panel" id="hx-p5"><div class="hx-panel-in">
                 <div class="hx-top"><span class="hx-big" aria-hidden="true">05</span><div><h4>Личностное исследование</h4><p class="hx-sum">Цифровая психология, игры, проективные методики</p></div></div>
-                <div class="hx-subs"><div class="hx-subitem"><h5>Цифровая психология и метод «Звезда»</h5><p>Глубинная работа с запросом через цифровой анализ: прошлые воплощения как символические сценарии и убеждения, миссия души, текущие задачи. Это не про «предсказания», а про глубинные смыслы и опоры, которые помогают человеку двигаться дальше.</p></div><div class="hx-subitem"><h5>Детские матрицы: таланты и направление ребёнка</h5><p>Через определённые инструменты я вижу, какие таланты и коды заложены в ребёнке, и помогаю родителям направить его бережно и точно — в соответствии с его природой, а не только с ожиданиями взрослых. Например, ребёнку может быть ближе спорт, а родители хотят отдать его на вокал или на сцену. Мы смотрим, что действительно раскроет ребёнка и принесёт ему опору в будущем.</p></div><div class="hx-subitem"><h5>Проективные методики</h5><p>Использую как инструмент, который помогает обойти рациональные защиты и увидеть запрос глубже — через образы, ассоциации, метафоры.</p></div><div class="hx-subitem"><h5>Трансформационная игра и фокус-группы</h5><p>Игра — формат, где за 3–4 часа можно прожить и проработать запрос, который в обычной беседе требует больше времени. Фокус-группа даёт поддержку и взгляд со стороны. Подходит для запросов «принять решение», «найти ресурс», «увидеть блок».</p></div></div>
+                <div class="hx-subs"><div class="hx-subitem"><h5>Цифровая психология и метод «Звезда»</h5><p>Глубинная работа с запросом через цифровой анализ: прошлые воплощения как символические сценарии и убеждения, миссия души, текущие задачи. Это не про «предсказания», а про глубинные смыслы и опоры, которые помогают человеку двигаться дальше.</p></div><div class="hx-subitem"><h5>Трансформационная игра и фокус-группы</h5><p>Игра — формат, где за 3–4 часа можно прожить и проработать запрос, который в обычной беседе требует больше времени. Фокус-группа даёт поддержку и взгляд со стороны. Подходит для запросов «принять решение», «найти ресурс», «увидеть блок».</p></div><div class="hx-subitem"><h5>Детские матрицы: таланты и направление ребёнка</h5><p>Через определённые инструменты я вижу, какие таланты и коды заложены в ребёнке, и помогаю родителям направить его бережно и точно — в соответствии с его природой, а не только с ожиданиями взрослых. Например, ребёнку может быть ближе спорт, а родители хотят отдать его на вокал или на сцену. Мы смотрим, что действительно раскроет ребёнка и принесёт ему опору в будущем.</p></div><div class="hx-subitem"><h5>Проективные методики</h5><p>Использую как инструмент, который помогает обойти рациональные защиты и увидеть запрос глубже — через образы, ассоциации, метафоры.</p></div></div>
               </div></div>
             </li>
           </ul>
