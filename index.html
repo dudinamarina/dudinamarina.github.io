@@ -229,7 +229,10 @@ h2 { font-family: var(--display); font-weight: 400; font-size: clamp(1.8rem, 3.6
 .zv-head > div:first-child { position: relative; z-index: 1; }
 #zvezda { overflow: hidden; }
 /* Вращающаяся сфера из точек и связей вокруг звезды */
-.zv-sphere { position: absolute; left: 50%; top: 50%; width: 330%; aspect-ratio: 1; max-width: none; transform: translate(-50%, -50%); z-index: -1; pointer-events: none; }
+#zvezda { position: relative; }
+#zvezda .wrap { position: relative; z-index: 1; }
+.zv-sphere { position: absolute; left: -14rem; top: 50%; width: 52rem; aspect-ratio: 1; max-width: none; transform: translateY(-50%); z-index: 0; pointer-events: none; }
+@media (max-width: 860px) { .zv-sphere { width: 36rem; left: -17rem; top: 22rem; } }
 .zv-star svg { position: relative; display: block; width: 100%; height: auto; overflow: visible; }
 .zv-star .ring { fill: none; stroke: var(--sage); stroke-width: 1.4; }
 .zv-star .ring.dash { stroke-dasharray: 3 9; transform-origin: 160px 160px; animation: spin 30s linear infinite; }
@@ -643,6 +646,7 @@ footer .wrap { align-items: center;  display: flex; flex-wrap: wrap; justify-con
   </section>
 
   <section class="section tinted" id="zvezda">
+    <canvas class="zv-sphere" id="zv-sphere" aria-hidden="true"></canvas>
     <div class="wrap">
       <p class="rail">Метод «Звезда»</p>
       <div class="body">
@@ -651,7 +655,7 @@ footer .wrap { align-items: center;  display: flex; flex-wrap: wrap; justify-con
             <h2>Разбор по методу «Звезда»</h2>
             <p class="zv-price">25 000 ₽ <span>глубинная сессия</span></p>
           </div>
-          <div class="zv-star"><canvas class="zv-sphere" id="zv-sphere" aria-hidden="true"></canvas><svg viewBox="0 0 320 320" aria-hidden="true"><circle class="ring dash" cx="160" cy="160" r="150"/><circle class="ring" cx="160" cy="160" r="120"/><polygon class="lines" points="160,40 230.5,257.1 45.9,122.9 274.1,122.9 89.5,257.1"/><circle class="pt" cx="160" cy="40" r="7"/><circle class="pt s" cx="274.1" cy="122.9" r="6"/><circle class="pt s" cx="230.5" cy="257.1" r="6"/><circle class="pt s" cx="89.5" cy="257.1" r="6"/><circle class="pt s" cx="45.9" cy="122.9" r="6"/></svg></div>
+          <div class="zv-star"><svg viewBox="0 0 320 320" aria-hidden="true"><circle class="ring dash" cx="160" cy="160" r="150"/><circle class="ring" cx="160" cy="160" r="120"/><polygon class="lines" points="160,40 230.5,257.1 45.9,122.9 274.1,122.9 89.5,257.1"/><circle class="pt" cx="160" cy="40" r="7"/><circle class="pt s" cx="274.1" cy="122.9" r="6"/><circle class="pt s" cx="230.5" cy="257.1" r="6"/><circle class="pt s" cx="89.5" cy="257.1" r="6"/><circle class="pt s" cx="45.9" cy="122.9" r="6"/></svg></div>
         </div>
         <p class="txt">Это глубинная работа по дате рождения с использованием инструмента «пятиконечная звезда» — метода цифровой психологии (кармической нумерологии). Мы смотрим на вашу личность объёмно: сильные стороны, зоны роста, повторяющиеся сценарии, психосоматические связи, задачи и ресурсы.</p>
         <p class="txt">Это не гадание и не «предсказания». Это способ посмотреть на себя с другой стороны — через символический язык вашей даты рождения — и соединить это с психологией: увидеть, как аспекты личности проявляются в теле, в отношениях, в выборе и в жизненных ситуациях.</p>
