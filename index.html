@@ -326,7 +326,7 @@ h2 { font-family: var(--display); font-weight: 400; font-size: clamp(1.8rem, 3.6
 .experience-approach { margin-top: 12px; }
 .experience-approach p { max-width: 600px; }
 .experience-approach p + p { margin-top: .8em; }
-.hx { --hx-rail: 52px; --hx-h: 520px; --hx-t: .62s; }
+.hx { --hx-rail: 64px; --hx-h: 620px; --hx-t: .62s; }
 .hx ul { display: flex; height: var(--hx-h); container-type: inline-size; border-right: 1px solid var(--line); }
 .hx li {
   position: relative; flex: 0 1 var(--hx-rail); min-width: 0; overflow: hidden; border-left: 1px solid var(--line);
@@ -349,12 +349,19 @@ h2 { font-family: var(--display); font-weight: 400; font-size: clamp(1.8rem, 3.6
 }
 @supports (width: 1cqw) { .hx-panel { width: calc(100cqw - var(--hx-n) * var(--hx-rail) - 12px); } }
 .hx li.on .hx-panel { opacity: 1; visibility: visible; transition: opacity .45s .2s, visibility 0s; }
-.hx-panel-in { display: flex; flex-direction: column; justify-content: flex-end; min-height: 100%; padding: 28px 30px 30px; }
-.hx-big { font-family: var(--display); font-variant-numeric: lining-nums; font-size: 64px; line-height: 1; color: var(--wine); opacity: .22; margin-bottom: auto; padding-bottom: 20px; }
-.hx-panel h4 { font-family: var(--display); font-weight: 400; font-size: 25px; line-height: 1.25; margin: 0 0 12px; text-wrap: balance; }
+.hx-panel-in { display: flex; flex-direction: column; justify-content: space-between; gap: 24px; min-height: 100%; padding: 28px 32px 32px; }
+.hx-top { display: flex; align-items: flex-end; gap: 22px; }
+.hx-panel p.hx-sum { font-size: 11px; font-weight: 600; letter-spacing: 2px; text-transform: uppercase; color: var(--wine); line-height: 1.6; }
+.hx-subs { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 20px 34px; }
+.hx-subs.hx-one { grid-template-columns: minmax(0, 34rem); }
+.hx-subitem h5 { font-family: var(--display); font-weight: 500; font-size: 17px; line-height: 1.3; margin: 0 0 6px; }
+.hx-subs .hx-subitem p { font-size: 13.5px; line-height: 1.65; }
+.hx-subs.hx-one .hx-subitem p { font-size: 15px; line-height: 1.8; }
+.hx-big { font-family: var(--display); font-variant-numeric: lining-nums; font-size: 64px; line-height: .9; color: var(--wine); opacity: .22; }
+.hx-panel h4 { font-family: var(--display); font-weight: 400; font-size: 28px; line-height: 1.2; margin: 0 0 6px; text-wrap: balance; }
 .hx-panel p { font-size: 15px; line-height: 1.7; color: var(--ink); margin: 0; max-width: none; }
 .hx-panel p + p { margin-top: .6em; }
-@media (min-width: 1024px) and (max-width: 1199px) { .hx { --hx-rail: 44px; --hx-h: 600px; } .hx-panel-in { padding: 22px 22px 24px; } .hx-big { font-size: 48px; } .hx-panel h4 { font-size: 22px; } }
+@media (min-width: 1024px) and (max-width: 1199px) { .hx { --hx-rail: 56px; --hx-h: 660px; } .hx-panel-in { padding: 24px 26px 26px; } }
 @media (max-width: 1023px) {
   .hx ul { display: block; height: auto; border-right: 0; border-top: 1px solid var(--line); }
   .hx li, .hx li.on { border-left: 0; border-bottom: 1px solid var(--line); overflow: visible; }
@@ -369,8 +376,10 @@ h2 { font-family: var(--display); font-weight: 400; font-size: clamp(1.8rem, 3.6
   .hx-panel, .hx li.on .hx-panel { position: static; width: auto; display: grid; grid-template-rows: 0fr; background: none; border-radius: 0; opacity: 1; visibility: visible; overflow: hidden; transition: grid-template-rows .45s cubic-bezier(.32, .72, 0, 1); }
   .hx li.on .hx-panel { grid-template-rows: 1fr; }
   .hx-panel-in { min-height: 0; overflow: hidden; display: block; padding: 0 0 0 calc(1.6rem + 14px); }
-  .hx-panel p:last-child { padding-bottom: 22px; }
   .hx-big, .hx-panel h4 { display: none; }
+  .hx-top { display: block; margin-bottom: 14px; }
+  .hx-subs, .hx-subs.hx-one { grid-template-columns: minmax(0, 1fr); gap: 16px; padding-bottom: 22px; }
+  .hx-subs .hx-subitem p, .hx-subs.hx-one .hx-subitem p { font-size: 14px; line-height: 1.7; }
   .hx-panel p { color: var(--muted); }
 }
 @media (prefers-reduced-motion: reduce) { .hx li, .hx-rail, .hx-num, .hx-panel, .hx li.on .hx-panel, .hx-plus::before, .hx-plus::after { transition: none; } }
@@ -747,188 +756,66 @@ footer .wrap { align-items: center;  display: flex; flex-wrap: wrap; justify-con
           <span class="experience-category">Запросы</span>
         </div>
         <h3>С чем я работаю</h3>
-        <div class="hx" id="hx" style="--hx-n: 14">
+        <div class="hx" id="hx" style="--hx-n: 5">
           <ul>
             <li class="on">
               <button type="button" class="hx-rail" aria-expanded="true" aria-controls="hx-p1">
                 <span class="hx-num">01</span>
-                <span class="hx-short">Самоценность и самооценка</span>
-                <span class="hx-full">Самоценность и самооценка</span>
+                <span class="hx-short">Самооценка и самоценность</span>
+                <span class="hx-full">Самооценка и самоценность</span>
                 <span class="hx-plus" aria-hidden="true"></span>
               </button>
               <div class="hx-panel" id="hx-p1"><div class="hx-panel-in">
-                <span class="hx-big" aria-hidden="true">01</span>
-                <h4>Самоценность и самооценка</h4>
-                <p>Работа с внутренним критиком, принятием себя, ощущением собственной ценности. Помогаю отделить «чужие» ожидания от своих желаний и найти внутреннюю опору. Опираюсь на позитивную психологию, проективные методики и клиентоцентрированный подход.</p>
+                <div class="hx-top"><span class="hx-big" aria-hidden="true">01</span><div><h4>Самооценка и самоценность</h4><p class="hx-sum">Самооценка, внутренний критик</p></div></div>
+                <div class="hx-subs hx-one"><div class="hx-subitem"><p>Работа с внутренним критиком, принятием себя, ощущением собственной ценности. Помогаю отделить «чужие» ожидания от своих желаний и найти внутреннюю опору. Опираюсь на позитивную психологию, проективные методики и клиентоцентрированный подход.</p></div></div>
               </div></div>
             </li>
             <li>
               <button type="button" class="hx-rail" aria-expanded="false" aria-controls="hx-p2">
                 <span class="hx-num">02</span>
-                <span class="hx-short">Самореализация и свой путь</span>
-                <span class="hx-full">Самореализация и поиск своего пути</span>
+                <span class="hx-short">Отношения</span>
+                <span class="hx-full">Отношения</span>
                 <span class="hx-plus" aria-hidden="true"></span>
               </button>
               <div class="hx-panel" id="hx-p2"><div class="hx-panel-in">
-                <span class="hx-big" aria-hidden="true">02</span>
-                <h4>Самореализация и поиск своего пути</h4>
-                <p>Запросы «кто я», «чем мне заниматься», «как реализовать себя». Работаем с ценностями, сильными сторонами, страхом проявляться. Использую коучинг, позитивную психологию и построение дорожной карты.</p>
+                <div class="hx-top"><span class="hx-big" aria-hidden="true">02</span><div><h4>Отношения</h4><p class="hx-sum">Партнёрские, семейные, детско-родительские</p></div></div>
+                <div class="hx-subs"><div class="hx-subitem"><h5>Отношения</h5><p>Партнёрские, семейные, межличностные. Работа с границами, конфликтами, созависимыми сценариями, умением говорить о потребностях. Опираюсь на гештальт-подход и клиентоцентрированную терапию.</p></div><div class="hx-subitem"><h5>Детско-родительские отношения</h5><p>Запросы родителей и взрослых детей: сепарация, чувство вины, гиперконтроль, принятие. Помогаю увидеть ситуацию с обеих сторон и выстроить более здоровый контакт.</p></div></div>
               </div></div>
             </li>
             <li>
               <button type="button" class="hx-rail" aria-expanded="false" aria-controls="hx-p3">
                 <span class="hx-num">03</span>
-                <span class="hx-short">Выгорание</span>
-                <span class="hx-full">Выгорание, в том числе профессиональное</span>
+                <span class="hx-short">Самореализация</span>
+                <span class="hx-full">Самореализация</span>
                 <span class="hx-plus" aria-hidden="true"></span>
               </button>
               <div class="hx-panel" id="hx-p3"><div class="hx-panel-in">
-                <span class="hx-big" aria-hidden="true">03</span>
-                <h4>Выгорание, в том числе профессиональное</h4>
-                <p>Помогаю восстановить ресурс, заметить выгорание на раннем этапе, выстроить режим и границы. Работаем с причинами — перегрузкой, долженствованиями, потерей смысла в деятельности. Сочетаю КПТ, телесные практики и позитивную психологию.</p>
+                <div class="hx-top"><span class="hx-big" aria-hidden="true">03</span><div><h4>Самореализация</h4><p class="hx-sum">Поиск себя, цели, коучинг</p></div></div>
+                <div class="hx-subs"><div class="hx-subitem"><h5>Самореализация и поиск своего пути</h5><p>Запросы «кто я», «чем мне заниматься», «как реализовать себя». Работаем с ценностями, сильными сторонами, страхом проявляться. Использую коучинг, позитивную психологию и построение дорожной карты.</p></div><div class="hx-subitem"><h5>Коучинг и постановка целей</h5><p>Движение от «хочу» к «делаю»: цели, шаги, сроки, поддержка.</p><p>Экологичная постановка целей с опорой на ценности.</p></div><div class="hx-subitem"><h5>Прогностика и дорожная карта</h5><p>Смотрим благоприятные периоды — месяцы, дни — для важных решений. Например, человек хочет открыть своё дело: мы просчитываем, когда это лучше сделать, опираясь на дату рождения и определённые аспекты звезды. На основе этого выстраиваем дорожную карту на ближайший год или более длительный горизонт.</p></div><div class="hx-subitem"><h5>Бизнес-совместимость и команда</h5><p>Помогаю выстроить модель бизнеса в партнёрстве, подобрать команду и сотрудников с учётом совместимости. Это помогает снизить трения, лучше распределить роли и собрать людей, с которыми дело будет устойчивым.</p></div></div>
               </div></div>
             </li>
             <li>
               <button type="button" class="hx-rail" aria-expanded="false" aria-controls="hx-p4">
                 <span class="hx-num">04</span>
-                <span class="hx-short">Отношения</span>
-                <span class="hx-full">Отношения</span>
+                <span class="hx-short">Эмоциональное состояние</span>
+                <span class="hx-full">Эмоциональное состояние</span>
                 <span class="hx-plus" aria-hidden="true"></span>
               </button>
               <div class="hx-panel" id="hx-p4"><div class="hx-panel-in">
-                <span class="hx-big" aria-hidden="true">04</span>
-                <h4>Отношения</h4>
-                <p>Партнёрские, семейные, межличностные. Работа с границами, конфликтами, созависимыми сценариями, умением говорить о потребностях. Опираюсь на гештальт-подход и клиентоцентрированную терапию.</p>
+                <div class="hx-top"><span class="hx-big" aria-hidden="true">04</span><div><h4>Эмоциональное состояние</h4><p class="hx-sum">Выгорание, внутренние ограничения</p></div></div>
+                <div class="hx-subs"><div class="hx-subitem"><h5>Выгорание, в том числе профессиональное</h5><p>Помогаю восстановить ресурс, заметить выгорание на раннем этапе, выстроить режим и границы. Работаем с причинами — перегрузкой, долженствованиями, потерей смысла в деятельности. Сочетаю КПТ, телесные практики и позитивную психологию.</p></div><div class="hx-subitem"><h5>Прошлое, настоящее и будущее: сценарии и причинно-следственные связи</h5><p>В работе мы смотрим на запрос объёмно: что закладывалось в прошлом — в том числе в утробе матери, в ранних сценариях и убеждениях, — как это проявляется сейчас и куда ведёт. Помогаю увидеть причинно-следственные связи и мягко переписать то, что мешает жить.</p></div><div class="hx-subitem"><h5>Телесные проявления стресса и психосоматика</h5><p>Работаю с телесными проявлениями тревоги, напряжения, стресса: через дыхание, заземление, осознавание ощущений в теле. Помогаю увидеть связь между тем, что происходит в теле, и тем, что происходит в жизни — и мягко снять то, что держит напряжение.</p></div></div>
               </div></div>
             </li>
             <li>
               <button type="button" class="hx-rail" aria-expanded="false" aria-controls="hx-p5">
                 <span class="hx-num">05</span>
-                <span class="hx-short">Детско-родительские отношения</span>
-                <span class="hx-full">Детско-родительские отношения</span>
+                <span class="hx-short">Личностное исследование</span>
+                <span class="hx-full">Личностное исследование</span>
                 <span class="hx-plus" aria-hidden="true"></span>
               </button>
               <div class="hx-panel" id="hx-p5"><div class="hx-panel-in">
-                <span class="hx-big" aria-hidden="true">05</span>
-                <h4>Детско-родительские отношения</h4>
-                <p>Запросы родителей и взрослых детей: сепарация, чувство вины, гиперконтроль, принятие. Помогаю увидеть ситуацию с обеих сторон и выстроить более здоровый контакт.</p>
-              </div></div>
-            </li>
-            <li>
-              <button type="button" class="hx-rail" aria-expanded="false" aria-controls="hx-p6">
-                <span class="hx-num">06</span>
-                <span class="hx-short">Детские матрицы</span>
-                <span class="hx-full">Детские матрицы: таланты и направление ребёнка</span>
-                <span class="hx-plus" aria-hidden="true"></span>
-              </button>
-              <div class="hx-panel" id="hx-p6"><div class="hx-panel-in">
-                <span class="hx-big" aria-hidden="true">06</span>
-                <h4>Детские матрицы: таланты и направление ребёнка</h4>
-                <p>Через определённые инструменты я вижу, какие таланты и коды заложены в ребёнке, и помогаю родителям направить его бережно и точно — в соответствии с его природой, а не только с ожиданиями взрослых. Например, ребёнку может быть ближе спорт, а родители хотят отдать его на вокал или на сцену. Мы смотрим, что действительно раскроет ребёнка и принесёт ему опору в будущем.</p>
-              </div></div>
-            </li>
-            <li>
-              <button type="button" class="hx-rail" aria-expanded="false" aria-controls="hx-p7">
-                <span class="hx-num">07</span>
-                <span class="hx-short">Прошлое, настоящее и будущее</span>
-                <span class="hx-full">Прошлое, настоящее и будущее: сценарии и причинно-следственные связи</span>
-                <span class="hx-plus" aria-hidden="true"></span>
-              </button>
-              <div class="hx-panel" id="hx-p7"><div class="hx-panel-in">
-                <span class="hx-big" aria-hidden="true">07</span>
-                <h4>Прошлое, настоящее и будущее: сценарии и причинно-следственные связи</h4>
-                <p>В работе мы смотрим на запрос объёмно: что закладывалось в прошлом — в том числе в утробе матери, в ранних сценариях и убеждениях, — как это проявляется сейчас и куда ведёт. Помогаю увидеть причинно-следственные связи и мягко переписать то, что мешает жить.</p>
-              </div></div>
-            </li>
-            <li>
-              <button type="button" class="hx-rail" aria-expanded="false" aria-controls="hx-p8">
-                <span class="hx-num">08</span>
-                <span class="hx-short">Цифровая психология и «Звезда»</span>
-                <span class="hx-full">Цифровая психология и метод «Звезда»</span>
-                <span class="hx-plus" aria-hidden="true"></span>
-              </button>
-              <div class="hx-panel" id="hx-p8"><div class="hx-panel-in">
-                <span class="hx-big" aria-hidden="true">08</span>
-                <h4>Цифровая психология и метод «Звезда»</h4>
-                <p>Глубинная работа с запросом через цифровой анализ: прошлые воплощения как символические сценарии и убеждения, миссия души, текущие задачи. Это не про «предсказания», а про глубинные смыслы и опоры, которые помогают человеку двигаться дальше.</p>
-              </div></div>
-            </li>
-            <li>
-              <button type="button" class="hx-rail" aria-expanded="false" aria-controls="hx-p9">
-                <span class="hx-num">09</span>
-                <span class="hx-short">Прогностика и дорожная карта</span>
-                <span class="hx-full">Прогностика и дорожная карта</span>
-                <span class="hx-plus" aria-hidden="true"></span>
-              </button>
-              <div class="hx-panel" id="hx-p9"><div class="hx-panel-in">
-                <span class="hx-big" aria-hidden="true">09</span>
-                <h4>Прогностика и дорожная карта</h4>
-                <p>Смотрим благоприятные периоды — месяцы, дни — для важных решений. Например, человек хочет открыть своё дело: мы просчитываем, когда это лучше сделать, опираясь на дату рождения и определённые аспекты звезды. На основе этого выстраиваем дорожную карту на ближайший год или более длительный горизонт.</p>
-              </div></div>
-            </li>
-            <li>
-              <button type="button" class="hx-rail" aria-expanded="false" aria-controls="hx-p10">
-                <span class="hx-num">10</span>
-                <span class="hx-short">Бизнес-совместимость и команда</span>
-                <span class="hx-full">Бизнес-совместимость и команда</span>
-                <span class="hx-plus" aria-hidden="true"></span>
-              </button>
-              <div class="hx-panel" id="hx-p10"><div class="hx-panel-in">
-                <span class="hx-big" aria-hidden="true">10</span>
-                <h4>Бизнес-совместимость и команда</h4>
-                <p>Помогаю выстроить модель бизнеса в партнёрстве, подобрать команду и сотрудников с учётом совместимости. Это помогает снизить трения, лучше распределить роли и собрать людей, с которыми дело будет устойчивым.</p>
-              </div></div>
-            </li>
-            <li>
-              <button type="button" class="hx-rail" aria-expanded="false" aria-controls="hx-p11">
-                <span class="hx-num">11</span>
-                <span class="hx-short">Коучинг и постановка целей</span>
-                <span class="hx-full">Коучинг и постановка целей</span>
-                <span class="hx-plus" aria-hidden="true"></span>
-              </button>
-              <div class="hx-panel" id="hx-p11"><div class="hx-panel-in">
-                <span class="hx-big" aria-hidden="true">11</span>
-                <h4>Коучинг и постановка целей</h4>
-                <p>Движение от «хочу» к «делаю»: цели, шаги, сроки, поддержка.</p><p>Экологичная постановка целей с опорой на ценности.</p>
-              </div></div>
-            </li>
-            <li>
-              <button type="button" class="hx-rail" aria-expanded="false" aria-controls="hx-p12">
-                <span class="hx-num">12</span>
-                <span class="hx-short">Проективные методики</span>
-                <span class="hx-full">Проективные методики</span>
-                <span class="hx-plus" aria-hidden="true"></span>
-              </button>
-              <div class="hx-panel" id="hx-p12"><div class="hx-panel-in">
-                <span class="hx-big" aria-hidden="true">12</span>
-                <h4>Проективные методики</h4>
-                <p>Использую как инструмент, который помогает обойти рациональные защиты и увидеть запрос глубже — через образы, ассоциации, метафоры.</p>
-              </div></div>
-            </li>
-            <li>
-              <button type="button" class="hx-rail" aria-expanded="false" aria-controls="hx-p13">
-                <span class="hx-num">13</span>
-                <span class="hx-short">Игра и фокус-группы</span>
-                <span class="hx-full">Трансформационная игра и фокус-группы</span>
-                <span class="hx-plus" aria-hidden="true"></span>
-              </button>
-              <div class="hx-panel" id="hx-p13"><div class="hx-panel-in">
-                <span class="hx-big" aria-hidden="true">13</span>
-                <h4>Трансформационная игра и фокус-группы</h4>
-                <p>Игра — формат, где за 3–4 часа можно прожить и проработать запрос, который в обычной беседе требует больше времени. Фокус-группа даёт поддержку и взгляд со стороны. Подходит для запросов «принять решение», «найти ресурс», «увидеть блок».</p>
-              </div></div>
-            </li>
-            <li>
-              <button type="button" class="hx-rail" aria-expanded="false" aria-controls="hx-p14">
-                <span class="hx-num">14</span>
-                <span class="hx-short">Тело и психосоматика</span>
-                <span class="hx-full">Телесные проявления стресса и психосоматика</span>
-                <span class="hx-plus" aria-hidden="true"></span>
-              </button>
-              <div class="hx-panel" id="hx-p14"><div class="hx-panel-in">
-                <span class="hx-big" aria-hidden="true">14</span>
-                <h4>Телесные проявления стресса и психосоматика</h4>
-                <p>Работаю с телесными проявлениями тревоги, напряжения, стресса: через дыхание, заземление, осознавание ощущений в теле. Помогаю увидеть связь между тем, что происходит в теле, и тем, что происходит в жизни — и мягко снять то, что держит напряжение.</p>
+                <div class="hx-top"><span class="hx-big" aria-hidden="true">05</span><div><h4>Личностное исследование</h4><p class="hx-sum">Цифровая психология, игры, проективные методики</p></div></div>
+                <div class="hx-subs"><div class="hx-subitem"><h5>Цифровая психология и метод «Звезда»</h5><p>Глубинная работа с запросом через цифровой анализ: прошлые воплощения как символические сценарии и убеждения, миссия души, текущие задачи. Это не про «предсказания», а про глубинные смыслы и опоры, которые помогают человеку двигаться дальше.</p></div><div class="hx-subitem"><h5>Детские матрицы: таланты и направление ребёнка</h5><p>Через определённые инструменты я вижу, какие таланты и коды заложены в ребёнке, и помогаю родителям направить его бережно и точно — в соответствии с его природой, а не только с ожиданиями взрослых. Например, ребёнку может быть ближе спорт, а родители хотят отдать его на вокал или на сцену. Мы смотрим, что действительно раскроет ребёнка и принесёт ему опору в будущем.</p></div><div class="hx-subitem"><h5>Проективные методики</h5><p>Использую как инструмент, который помогает обойти рациональные защиты и увидеть запрос глубже — через образы, ассоциации, метафоры.</p></div><div class="hx-subitem"><h5>Трансформационная игра и фокус-группы</h5><p>Игра — формат, где за 3–4 часа можно прожить и проработать запрос, который в обычной беседе требует больше времени. Фокус-группа даёт поддержку и взгляд со стороны. Подходит для запросов «принять решение», «найти ресурс», «увидеть блок».</p></div></div>
               </div></div>
             </li>
           </ul>
