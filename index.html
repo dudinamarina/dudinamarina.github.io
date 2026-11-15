@@ -225,7 +225,12 @@ h2 { font-family: var(--display); font-weight: 400; font-size: clamp(1.8rem, 3.6
 .zv-price { font-family: var(--display); font-variant-numeric: lining-nums; font-size: clamp(2rem, 4vw, 2.8rem); line-height: 1; color: var(--wine); margin-top: 1.1rem; }
 .zv-price span { font: 400 .9rem/1.4 var(--body); color: var(--muted); margin-left: .6rem; }
 .zv-star { width: clamp(7rem, 16vw, 11rem); }
-.zv-star svg { display: block; width: 100%; height: auto; overflow: visible; }
+.zv-star { position: relative; isolation: isolate; }
+.zv-head > div:first-child { position: relative; z-index: 1; }
+#zvezda { overflow: hidden; }
+/* Вращающаяся сфера из точек и связей вокруг звезды */
+.zv-sphere { position: absolute; left: 50%; top: 50%; width: 330%; aspect-ratio: 1; max-width: none; transform: translate(-50%, -50%); z-index: -1; pointer-events: none; }
+.zv-star svg { position: relative; display: block; width: 100%; height: auto; overflow: visible; }
 .zv-star .ring { fill: none; stroke: var(--sage); stroke-width: 1.4; }
 .zv-star .ring.dash { stroke-dasharray: 3 9; transform-origin: 160px 160px; animation: spin 30s linear infinite; }
 .zv-star .lines { fill: none; stroke: var(--ink); stroke-width: 1.6; stroke-linejoin: round; }
@@ -646,7 +651,7 @@ footer .wrap { align-items: center;  display: flex; flex-wrap: wrap; justify-con
             <h2>Разбор по методу «Звезда»</h2>
             <p class="zv-price">25 000 ₽ <span>глубинная сессия</span></p>
           </div>
-          <div class="zv-star"><svg viewBox="0 0 320 320" aria-hidden="true"><circle class="ring dash" cx="160" cy="160" r="150"/><circle class="ring" cx="160" cy="160" r="120"/><polygon class="lines" points="160,40 230.5,257.1 45.9,122.9 274.1,122.9 89.5,257.1"/><circle class="pt" cx="160" cy="40" r="7"/><circle class="pt s" cx="274.1" cy="122.9" r="6"/><circle class="pt s" cx="230.5" cy="257.1" r="6"/><circle class="pt s" cx="89.5" cy="257.1" r="6"/><circle class="pt s" cx="45.9" cy="122.9" r="6"/></svg></div>
+          <div class="zv-star"><canvas class="zv-sphere" id="zv-sphere" aria-hidden="true"></canvas><svg viewBox="0 0 320 320" aria-hidden="true"><circle class="ring dash" cx="160" cy="160" r="150"/><circle class="ring" cx="160" cy="160" r="120"/><polygon class="lines" points="160,40 230.5,257.1 45.9,122.9 274.1,122.9 89.5,257.1"/><circle class="pt" cx="160" cy="40" r="7"/><circle class="pt s" cx="274.1" cy="122.9" r="6"/><circle class="pt s" cx="230.5" cy="257.1" r="6"/><circle class="pt s" cx="89.5" cy="257.1" r="6"/><circle class="pt s" cx="45.9" cy="122.9" r="6"/></svg></div>
         </div>
         <p class="txt">Это глубинная работа по дате рождения с использованием инструмента «пятиконечная звезда» — метода цифровой психологии (кармической нумерологии). Мы смотрим на вашу личность объёмно: сильные стороны, зоны роста, повторяющиеся сценарии, психосоматические связи, задачи и ресурсы.</p>
         <p class="txt">Это не гадание и не «предсказания». Это способ посмотреть на себя с другой стороны — через символический язык вашей даты рождения — и соединить это с психологией: увидеть, как аспекты личности проявляются в теле, в отношениях, в выборе и в жизненных ситуациях.</p>
@@ -1162,6 +1167,61 @@ footer .wrap { align-items: center;  display: flex; flex-wrap: wrap; justify-con
     b.addEventListener('focus', function () { if (desktop.matches) open(li); });
     b.addEventListener('click', function () { open(!desktop.matches && li.classList.contains('on') ? null : li); });
   });
+})();
+</script>
+
+<script>
+/* Сфера из точек и связей в разделе «Метод „Звезда“» */
+(function () {
+  var c = document.getElementById('zv-sphere'); if (!c || !c.getContext) return;
+  var ctx = c.getContext('2d'), N = 110, pts = [], edges = [], size = 0, visible = true;
+  var reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var col = { line: '#8FA596', node: '#5C7565', accent: '#7A2335' };
+  for (var i = 0; i < N; i++) {
+    var phi = Math.acos(-1 + (2 * i + 1) / N), th = Math.sqrt(N * Math.PI) * phi;
+    pts.push({ x: Math.cos(th) * Math.sin(phi), y: Math.sin(th) * Math.sin(phi), z: Math.cos(phi),
+      r: Math.random() * .9 + .7, sp: Math.random() * .0012 + .0008, ph: Math.random() * 6.28, accent: i % 9 === 0 });
+  }
+  for (var a = 0; a < N; a++) for (var b = a + 1; b < N; b++) {
+    var d = Math.hypot(pts[a].x - pts[b].x, pts[a].y - pts[b].y, pts[a].z - pts[b].z);
+    if (d < .46) edges.push([a, b, 1 - d / .46]);
+  }
+  function colors() {
+    var cs = getComputedStyle(document.documentElement);
+    col.line = cs.getPropertyValue('--sage').trim() || col.line;
+    col.node = cs.getPropertyValue('--sage-deep').trim() || col.node;
+    col.accent = cs.getPropertyValue('--wine').trim() || col.accent;
+  }
+  function resize() {
+    var dpr = Math.min(window.devicePixelRatio || 1, 2); size = c.clientWidth;
+    c.width = c.height = Math.max(1, Math.round(size * dpr)); ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+  }
+  function draw(t) {
+    var R = size * .43, cx = size / 2, cy = size / 2, ry = t * .00011, rz = t * .00004, rx = .2;
+    var cyy = Math.cos(ry), syy = Math.sin(ry), cz = Math.cos(rz), sz = Math.sin(rz), cxx = Math.cos(rx), sxx = Math.sin(rx), P = [];
+    for (var i = 0; i < N; i++) {
+      var p = pts[i], x = p.x * cz - p.y * sz, y = p.x * sz + p.y * cz, z = p.z;
+      var x2 = x * cyy + z * syy, z2 = -x * syy + z * cyy, y2 = y * cxx - z2 * sxx, z3 = y * sxx + z2 * cxx;
+      var k = 1 + z3 * .18; P.push({ x: cx + x2 * R * k, y: cy + y2 * R * k, d: (z3 + 1) / 2 });
+    }
+    ctx.clearRect(0, 0, size, size); ctx.lineWidth = 1; ctx.strokeStyle = col.line;
+    for (var e = 0; e < edges.length; e++) {
+      var A = P[edges[e][0]], B = P[edges[e][1]];
+      ctx.globalAlpha = edges[e][2] * (.12 + (A.d + B.d) * .28);
+      ctx.beginPath(); ctx.moveTo(A.x, A.y); ctx.lineTo(B.x, B.y); ctx.stroke();
+    }
+    for (var j = 0; j < N; j++) {
+      var q = pts[j], pulse = (Math.sin(t * q.sp + q.ph) + 1) / 2, rad = (q.r + pulse * .9) * (.6 + P[j].d * .7);
+      ctx.fillStyle = q.accent ? col.accent : col.node; ctx.globalAlpha = (.25 + pulse * .45) * (.35 + P[j].d * .65);
+      ctx.beginPath(); ctx.arc(P[j].x, P[j].y, rad, 0, 6.2832); ctx.fill();
+    }
+    ctx.globalAlpha = 1;
+  }
+  function loop(t) { if (visible) draw(t); requestAnimationFrame(loop); }
+  var timer; window.addEventListener('resize', function () { clearTimeout(timer); timer = setTimeout(function () { resize(); if (reduced) draw(0); }, 150); });
+  if ('IntersectionObserver' in window) new IntersectionObserver(function (en) { visible = en[0].isIntersecting; }).observe(c);
+  colors(); resize();
+  if (reduced) draw(0); else requestAnimationFrame(loop);
 })();
 </script>
 </body>
