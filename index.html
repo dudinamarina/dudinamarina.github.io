@@ -371,6 +371,7 @@ h2 { font-family: var(--display); font-weight: 400; font-size: clamp(1.8rem, 3.6
 .intro h3 { font-family: var(--display); font-weight: 400; font-size: clamp(1.4rem, 2.6vw, 1.85rem); line-height: 1.2; }
 .intro p { color: var(--muted); margin-top: .5rem; }
 
+.body p.reviews-intro { max-width: 550px; color: var(--muted); font-size: 15px; line-height: 1.9; }
 /* Reviews: карусель телефонов со скриншотами переписки */
 .phones { position: relative; display: grid; gap: 1.6rem; justify-items: center; }
 .phones-stage { position: relative; width: 100%; height: calc(var(--pw) * 2.02); overflow: hidden; --pw: min(72vw, 19.5rem); touch-action: pan-y; }
@@ -865,7 +866,7 @@ footer .wrap { align-items: center;  display: flex; flex-wrap: wrap; justify-con
       <p class="rail">Отзывы</p>
       <div class="body">
         <h2>Обратная связь</h2>
-        <p>Я с глубоким уважением отношусь к историям своих клиентов. Публикую отзывы только с их письменного разрешения, сохраняя анонимность по запросу. Для меня важно, чтобы вы могли увидеть реальный опыт других людей, но при этом чувствовали себя в безопасности.</p>
+        <p class="reviews-intro">Я с глубоким уважением отношусь к историям своих клиентов. Публикую отзывы только с их письменного разрешения, сохраняя анонимность по запросу. Для меня важно, чтобы вы могли увидеть реальный опыт других людей, но при этом чувствовали себя в безопасности.</p>
         <p class="note">Листайте стрелками или свайпом.</p>
         <div class="phones" id="phones">
           <div class="phones-stage" aria-roledescription="карусель" aria-label="Отзывы клиентов">
