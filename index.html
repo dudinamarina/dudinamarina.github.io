@@ -119,6 +119,9 @@ h1 {
 }
 h1 em { font-style: italic; color: var(--wine); }
 .lead { font-size: clamp(1.1rem, 1.6vw, 1.3rem); color: var(--muted); max-width: 32rem; margin-top: 1.6rem; }
+.hero-tags { display: flex; flex-wrap: wrap; gap: .5rem 1.4rem; margin-top: 1.4rem; font-size: .8rem; letter-spacing: .12em; text-transform: uppercase; color: var(--sage-deep); font-weight: 500; }
+.hero-tags li { display: flex; align-items: center; gap: .6rem; }
+.hero-tags li::before { content: ""; width: 5px; height: 5px; border-radius: 50%; background: var(--wine); flex: none; }
 .hero-actions { display: flex; flex-wrap: wrap; align-items: center; gap: 1.2rem 1.8rem; margin-top: 2.4rem; }
 .portrait { position: relative; justify-self: end; width: min(100%, 24rem); }
 .portrait::before {
@@ -499,7 +502,12 @@ footer .wrap { align-items: center;  display: flex; flex-wrap: wrap; justify-con
       <div class="hero-text">
         <p class="eyebrow">Психолог-терапевт</p>
         <h1>Анастасия <em>Дьяконова</em></h1>
-        <p class="lead">Интегративный подход, цифровая психология и трансформационные игры.</p>
+        <p class="lead">Помогаю лучше понять себя, разобраться в жизненных сценариях, выстроить личные границы и найти внутренние опоры.</p>
+        <ul class="hero-tags" aria-label="Направления работы">
+          <li>Индивидуальная работа</li>
+          <li>Цифровая психология</li>
+          <li>Трансформационные игры</li>
+        </ul>
         <div class="hero-actions">
           <a class="btn" href="https://t.me/Dyakonova_Anastasya?text=%D0%97%D0%B4%D1%80%D0%B0%D0%B2%D1%81%D1%82%D0%B2%D1%83%D0%B9%D1%82%D0%B5%2C%20%D0%90%D0%BD%D0%B0%D1%81%D1%82%D0%B0%D1%81%D0%B8%D1%8F%21%20%D0%A5%D0%BE%D1%87%D1%83%20%D0%B7%D0%B0%D0%BF%D0%B8%D1%81%D0%B0%D1%82%D1%8C%D1%81%D1%8F%20%D0%BD%D0%B0%20%D0%BA%D0%BE%D0%BD%D1%81%D1%83%D0%BB%D1%8C%D1%82%D0%B0%D1%86%D0%B8%D1%8E." target="_blank" rel="noopener">Записаться на знакомство</a>
           <a class="btn ghost" href="#services">Услуги и стоимость<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 12h16M14 6l6 6-6 6"/></svg></a>
