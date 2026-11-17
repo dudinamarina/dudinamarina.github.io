@@ -197,17 +197,25 @@ h2 { font-family: var(--display); font-weight: 400; font-size: clamp(1.8rem, 3.6
 }
 .quote em { color: var(--wine); }
 .approach-cta { justify-self: start; margin-top: .6rem; }
-.methods { display: flex; flex-wrap: wrap; gap: .5rem; }
+/* Методы: ровная сетка 3×2 с номерами, как в остальных списках сайта */
+.methods { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 10px; max-width: 600px; counter-reset: m; }
+.methods li { counter-increment: m; min-width: 0; }
 .methods button {
-  font: 400 .88rem/1.4 var(--body); padding: .4rem .95rem; border: 1px solid var(--sage); border-radius: 999px;
-  background: transparent; color: var(--sage-deep); cursor: pointer; transition: background .25s, color .25s, border-color .25s;
+  display: grid; grid-template-columns: auto minmax(0, 1fr); align-items: baseline; gap: 10px;
+  width: 100%; height: 100%; padding: 14px 16px; border: 1px solid var(--line); border-radius: 14px;
+  background: transparent; color: var(--ink); font: 400 14px/1.35 var(--body); text-align: left; cursor: pointer;
+  transition: background .25s, border-color .25s, color .25s;
 }
+.methods button::before { content: counter(m, decimal-leading-zero); font-family: var(--display); font-variant-numeric: lining-nums; font-size: 13px; color: var(--wine); opacity: .6; }
+.methods button:hover { border-color: var(--blush); }
 .methods button.on { background: var(--blush-soft); border-color: var(--blush); color: var(--wine); }
+.methods button.on::before { opacity: 1; }
 .body p.method-info {
-  min-height: 3.4em; margin-top: -.6rem; padding-left: 1rem; border-left: 2px solid var(--blush);
-  font-size: .98rem; line-height: 1.7; color: var(--muted); max-width: 34rem; transition: opacity .2s;
+  max-width: 600px; min-height: 3.6em; margin-top: -.4rem; padding: 2px 0 2px 1rem; border-left: 2px solid var(--blush);
+  font-size: 14px; line-height: 1.8; color: var(--muted); transition: opacity .2s;
 }
-.method-info.active { color: var(--ink); border-left-color: var(--blush); }
+.method-info.active { color: var(--ink); }
+@media (max-width: 600px) { .methods { grid-template-columns: repeat(2, minmax(0, 1fr)); } .methods button { grid-template-columns: minmax(0, 1fr); gap: 4px; padding: 11px 13px 13px; font-size: 13.5px; } }
 .method-info.fade { opacity: 0; }
 @media (prefers-reduced-motion: reduce) { .methods button, .method-info { transition: none; } }
 
@@ -627,7 +635,7 @@ footer .wrap { align-items: center;  display: flex; flex-wrap: wrap; justify-con
           <li><button type="button" data-info="Внимание к тому, что вы чувствуете и проживаете здесь и сейчас.">Гештальт-подход</button></li>
           <li><button type="button" data-info="Анализ личности через призму цифр: помогает увидеть сильные стороны и зоны роста.">Цифровая психология</button></li>
           <li><button type="button" data-info="Работа через ощущения, дыхание, заземление. Помогают, когда важно не «понять головой», а прожить и снять напряжение в теле.">Телесные практики</button></li>
-          <li><button type="button" class="on" aria-pressed="true" data-info="Индивидуальный или групповой формат: за 3–4 часа игры можно прожить и проработать свой запрос.">Трансформационные игры</button></li>
+          <li><button type="button" class="on" aria-pressed="true" data-info="Индивидуальный или групповой формат: за 3–4 часа игры можно прожить и проработать свой запрос.">Трансформа&shy;ционные игры</button></li>
         </ul>
         <p class="method-info active" id="method-info" aria-live="polite">Индивидуальный или групповой формат: за 3–4 часа игры можно прожить и проработать свой запрос.</p>
       </div>
