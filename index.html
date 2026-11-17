@@ -283,6 +283,21 @@ h2 { font-family: var(--display); font-weight: 400; font-size: clamp(1.8rem, 3.6
   .edu-footer { margin-left: 0; }
 }
 
+/* Документы об образовании: миниатюры с увеличением */
+.edu-docs { margin: 0 0 40px 65px; max-width: 770px; }
+.edu-docs-title { font-size: 11px; font-weight: 600; letter-spacing: 2px; text-transform: uppercase; color: var(--wine); margin-bottom: 16px; }
+.edu-docs-row { display: flex; flex-wrap: wrap; gap: 18px 26px; align-items: flex-start; }
+.edu-doc { display: flex; align-items: center; gap: 14px; padding: 0; border: 0; background: none; cursor: zoom-in; text-align: left; color: var(--ink); font: inherit; }
+.edu-doc-img { flex: none; display: block; overflow: hidden; border-radius: 6px; border: 1px solid var(--line); background: var(--bg); box-shadow: 0 10px 22px -16px color-mix(in srgb, var(--ink) 45%, transparent); transition: transform .3s; }
+.edu-doc-img img { display: block; width: 100%; height: 100%; object-fit: cover; }
+.edu-doc-wide { width: 104px; height: 76px; }
+.edu-doc-tall { width: 56px; height: 76px; }
+.edu-doc:hover .edu-doc-img { transform: translateY(-3px); }
+.edu-doc-cap { font-size: 13.5px; line-height: 1.4; max-width: 15rem; }
+.edu-doc-cap small { display: block; font-size: 12px; color: var(--muted); margin-top: 3px; }
+@media (max-width: 600px) { .edu-docs { margin-left: 0; } }
+@media (prefers-reduced-motion: reduce) { .edu-doc-img { transition: none; } }
+
 /* Опыт работы: стили заказчика в цветах и шрифтах сайта */
 .experience-section {
   background: var(--bg); color: var(--ink); padding-block: clamp(68px, 9vw, 100px);
@@ -752,6 +767,20 @@ footer .wrap { align-items: center;  display: flex; flex-wrap: wrap; justify-con
         </article>
       </div>
 
+      <div class="edu-docs">
+        <p class="edu-docs-title">Документы</p>
+        <div class="edu-docs-row">
+          <button class="edu-doc" type="button" data-src="docs/diploma.jpg" data-alt="Диплом о профессиональной переподготовке по программе «Цифровая психология», квалификация «Психолог-консультант»">
+            <span class="edu-doc-img edu-doc-wide"><img src="docs/diploma.jpg" alt="" loading="lazy"></span>
+            <span class="edu-doc-cap">Диплом о профессиональной переподготовке<small>Психолог-консультант · 2025</small></span>
+          </button>
+          <button class="edu-doc" type="button" data-src="docs/certificate.jpg" data-alt="Сертификат «Профессия цифровой психолог»">
+            <span class="edu-doc-img edu-doc-tall"><img src="docs/certificate.jpg" alt="" loading="lazy"></span>
+            <span class="edu-doc-cap">Сертификат «Профессия цифровой психолог»<small>Ведущая игры «Выход из матрицы» · 2025</small></span>
+          </button>
+        </div>
+      </div>
+
       <div class="edu-footer">
         <span></span>
         <p>Непрерывное развитие — важная часть моего профессионального пути.</p>
@@ -1176,6 +1205,19 @@ footer .wrap { align-items: center;  display: flex; flex-wrap: wrap; justify-con
     b.addEventListener('focus', function () { if (desktop.matches) open(li); });
     b.addEventListener('click', function () { open(!desktop.matches && li.classList.contains('on') ? null : li); });
   });
+})();
+</script>
+
+<dialog class="lightbox" id="doc-view" aria-label="Документ крупным планом"><img src="docs/diploma.jpg" alt=""></dialog>
+<script>
+/* Просмотр документов об образовании крупным планом */
+(function () {
+  var d = document.getElementById('doc-view'); if (!d || !d.showModal) return;
+  var im = d.querySelector('img');
+  [].forEach.call(document.querySelectorAll('.edu-doc'), function (b) {
+    b.addEventListener('click', function () { im.src = b.dataset.src; im.alt = b.dataset.alt; d.showModal(); });
+  });
+  d.addEventListener('click', function () { d.close(); });
 })();
 </script>
 </body>
