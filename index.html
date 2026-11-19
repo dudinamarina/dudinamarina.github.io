@@ -4,6 +4,9 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <meta name="color-scheme" content="light">
+<link rel="icon" type="image/svg+xml" href="favicon.svg">
+<link rel="icon" type="image/png" sizes="32x32" href="favicon-32.png">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
 <title>Анастасия Дьяконова</title>
 <meta name="description" content="Анастасия Дьяконова — психолог-терапевт. Интегративный подход, цифровая психология и трансформационные игры.">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Golos+Text:wght@400;500;600&family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,400;1,500&display=swap">
@@ -24,6 +27,7 @@ body { margin: 0; } img { max-width: 100%; }
   --btn-bg-hover: #631A2A;
   --btn-fg: #FBF4EE;
   --line: rgba(52, 52, 59, .14);
+  --runes: url("data:image/svg+xml,%3Csvg%20xmlns=%27http://www.w3.org/2000/svg%27%20width=%27220%27%20height=%27220%27%20viewBox=%270%200%20220%20220%27%3E%3Cg%20fill=%27none%27%20stroke=%27%235C7565%27%20stroke-opacity=%27.07%27%20stroke-width=%271.6%27%20stroke-linejoin=%27round%27%3E%3Cpath%20d=%27M42.0%2022.6L27.3%2037.4L42.0%2050.2L56.7%2037.4Z%20M27.3%2037.4L56.7%2063.0%20M56.7%2037.4L27.3%2063.0%27/%3E%3Cpath%20d=%27M159.6%2041.8L146.4%2055.0L159.6%2068.2%27/%3E%3Cpath%20d=%27M55.6%20139.8L42.4%20153.0L55.6%20166.2%27/%3E%3Cpath%20d=%27M158.0%20142.6L143.3%20157.4L158.0%20170.2L172.7%20157.4Z%20M143.3%20157.4L172.7%20183.0%20M172.7%20157.4L143.3%20183.0%27/%3E%3C/g%3E%3C/svg%3E");
   --band: var(--bg);
   --band-ink: var(--ink);
   --band-muted: var(--muted);
@@ -35,7 +39,7 @@ body { margin: 0; } img { max-width: 100%; }
 *, *::before, *::after { box-sizing: border-box; }
 html { scroll-behavior: smooth; }
 body {
-  background: var(--bg); color: var(--ink);
+  background: var(--bg) var(--runes) 0 0 / 220px 220px; color: var(--ink);
   font-family: var(--body); font-size: 1.0625rem; line-height: 1.65;
   -webkit-font-smoothing: antialiased;
 }
@@ -422,7 +426,7 @@ h2 { font-family: var(--display); font-weight: 400; font-size: clamp(1.8rem, 3.6
 @media (prefers-reduced-motion: reduce) { .hx li, .hx-rail, .hx-num, .hx-panel, .hx li.on .hx-panel, .hx-plus::before, .hx-plus::after { transition: none; } }
 
 /* Services */
-.tinted { background: var(--surface); }
+.tinted { background: var(--surface) var(--runes) 0 0 / 220px 220px; }
 .services { display: grid; grid-template-columns: repeat(6, minmax(0, 1fr)); gap: 1.1rem; }
 .service {
   grid-column: span 2; display: flex; flex-direction: column; align-items: center; text-align: center; gap: .55rem;
@@ -431,6 +435,8 @@ h2 { font-family: var(--display); font-weight: 400; font-size: clamp(1.8rem, 3.6
   transition: transform .3s, box-shadow .3s;
 }
 .service:nth-child(-n+2) { grid-column: span 3; }
+.rune-mark { position: relative; }
+.service-rune { position: absolute; top: 18px; right: 18px; width: 18px; height: 18px; fill: none; stroke: var(--wine); stroke-width: 9; stroke-linecap: butt; stroke-linejoin: miter; opacity: .75; }
 .service:hover { transform: translateY(-4px); box-shadow: 0 1px 0 var(--line), 0 26px 46px -26px color-mix(in srgb, var(--wine) 60%, transparent); }
 .service h3 { order: 1; font: 600 .98rem/1.35 var(--body); letter-spacing: .14em; text-transform: uppercase; text-wrap: balance; }
 .service h3 span { display: block; font: 400 .82rem/1.4 var(--body); letter-spacing: .02em; text-transform: none; color: var(--sage-deep); margin-top: .35rem; }
@@ -607,7 +613,7 @@ footer .wrap { align-items: center;  display: flex; flex-wrap: wrap; justify-con
         </div>
       </div>
       <figure class="portrait">
-        <img src="portrait.jpg" alt="Анастасия Дьяконова, психолог-терапевт" width="960" height="1280">
+        <img src="othala-kenaz-anastasia.jpg" alt="Анастасия Дьяконова, психолог-терапевт" width="960" height="1280">
         <div class="star" aria-hidden="true"><svg viewBox="0 0 320 320" role="presentation">
           <circle class="ring dash" cx="160" cy="160" r="150"/>
           <circle class="ring" cx="160" cy="160" r="120"/>
@@ -905,7 +911,7 @@ footer .wrap { align-items: center;  display: flex; flex-wrap: wrap; justify-con
             <span class="price">25 000 ₽</span>
             <p>Глубинный анализ вашей личности через призму цифр. Помогает увидеть сильные стороны и зоны роста.</p>
           </article>
-          <article class="service">
+          <article class="service rune-mark"><svg class="service-rune" viewBox="0 0 100 100" aria-hidden="true"><path d="M72 6L28 50L72 94"/></svg>
             <h3>Ведение и сопровождение</h3>
             <span class="dur">1 месяц</span>
             <span class="price">30 000 ₽</span>
@@ -1227,5 +1233,6 @@ footer .wrap { align-items: center;  display: flex; flex-wrap: wrap; justify-con
   d.addEventListener('click', function () { d.close(); });
 })();
 </script>
+<!-- Защищено Оталой и Кеназом. Да будет так -->
 </body>
 </html>
