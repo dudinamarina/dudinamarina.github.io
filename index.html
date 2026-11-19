@@ -140,7 +140,11 @@ h1 em { font-style: italic; color: var(--wine); }
 .hero-tags { display: flex; flex-wrap: wrap; gap: .5rem 1.4rem; margin-top: 1.2rem; font-size: .72rem; letter-spacing: .12em; text-transform: uppercase; color: var(--sage-deep); font-weight: 500; }
 .hero-tags li { display: flex; align-items: center; gap: .6rem; }
 .hero-tags li::before { content: ""; width: 5px; height: 5px; border-radius: 50%; background: var(--wine); flex: none; }
-.hero-actions { display: flex; flex-wrap: wrap; align-items: center; gap: 1.2rem 1.8rem; margin-top: 2.4rem; }
+.hero-actions { display: flex; flex-wrap: wrap; align-items: flex-start; gap: 1.2rem 1.8rem; margin-top: 2.4rem; }
+.hero-cta { display: grid; gap: .8rem; justify-items: start; }
+.hero-note { display: grid; gap: .15rem; margin: 0; padding-left: 1.4rem; }
+.hero-note b { font-size: 14px; font-weight: 500; color: var(--ink); }
+.hero-note span { font-size: 13px; line-height: 1.5; color: var(--muted); max-width: 22rem; text-wrap: balance; }
 .portrait { position: relative; justify-self: end; width: min(100%, 24rem); }
 .portrait::before {
   content: ""; position: absolute; inset: 12% -7% -4% 14%;
@@ -622,7 +626,10 @@ footer .wrap { align-items: center;  display: flex; flex-wrap: wrap; justify-con
           <li>Трансформационные игры</li>
         </ul>
         <div class="hero-actions">
-          <a class="btn" href="https://t.me/Dyakonova_Anastasya?text=%D0%97%D0%B4%D1%80%D0%B0%D0%B2%D1%81%D1%82%D0%B2%D1%83%D0%B9%D1%82%D0%B5%2C%20%D0%90%D0%BD%D0%B0%D1%81%D1%82%D0%B0%D1%81%D0%B8%D1%8F%21%20%D0%A5%D0%BE%D1%87%D1%83%20%D0%B7%D0%B0%D0%BF%D0%B8%D1%81%D0%B0%D1%82%D1%8C%D1%81%D1%8F%20%D0%BD%D0%B0%20%D0%BA%D0%BE%D0%BD%D1%81%D1%83%D0%BB%D1%8C%D1%82%D0%B0%D1%86%D0%B8%D1%8E." target="_blank" rel="noopener">Записаться на знакомство</a>
+          <div class="hero-cta">
+            <a class="btn" href="https://t.me/Dyakonova_Anastasya?text=%D0%97%D0%B4%D1%80%D0%B0%D0%B2%D1%81%D1%82%D0%B2%D1%83%D0%B9%D1%82%D0%B5%2C%20%D0%90%D0%BD%D0%B0%D1%81%D1%82%D0%B0%D1%81%D0%B8%D1%8F%21%20%D0%A5%D0%BE%D1%87%D1%83%20%D0%B7%D0%B0%D0%BF%D0%B8%D1%81%D0%B0%D1%82%D1%8C%D1%81%D1%8F%20%D0%BD%D0%B0%20%D0%BA%D0%BE%D0%BD%D1%81%D1%83%D0%BB%D1%8C%D1%82%D0%B0%D1%86%D0%B8%D1%8E." target="_blank" rel="noopener">Записаться на знакомство</a>
+            <p class="hero-note"><b>Первое знакомство бесплатно</b><span>20 минут — чтобы понять, комфортно ли нам вместе</span></p>
+          </div>
           <a class="btn ghost" href="#services">Услуги и стоимость<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 12h16M14 6l6 6-6 6"/></svg></a>
         </div>
       </div>
